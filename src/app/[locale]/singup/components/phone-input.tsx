@@ -32,14 +32,10 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwa
       value={value || undefined}
       /**
        * Handles the onChange event.
-       *
        * react-phone-number-input might trigger the onChange event as undefined
-       * when a valid phone number is not entered. To prevent this,
-       * the value is coerced to an empty string.
-       *
-       * @param {E164Number | undefined} value - The entered value
+       * when a valid phone number is not entered.
        */
-      onChange={(value) => onChange?.(value || ("" as RPNInput.Value))}
+      onChange={(val) => onChange?.((val ?? "") as RPNInput.Value)}
       {...props}
     />
   );
@@ -48,7 +44,7 @@ PhoneInput.displayName = "PhoneInput";
 
 const InputComponent = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, ...props }, ref) => (
-    <Input className={cn(" h-medium:h-9 h-12  rounded-none", className)} {...props} ref={ref} />
+    <Input className={cn("h-medium:h-9 h-12 rounded-none", className)} {...props} ref={ref} />
   )
 );
 InputComponent.displayName = "InputComponent";
@@ -73,7 +69,7 @@ const CountrySelect = ({ disabled, value: selectedCountry, options: countryList,
       modal
       onOpenChange={(open) => {
         setIsOpen(open);
-        open && setSearchValue("");
+        if (open) setSearchValue("");
       }}
     >
       <PopoverTrigger asChild>
@@ -91,14 +87,12 @@ const CountrySelect = ({ disabled, value: selectedCountry, options: countryList,
         <Command>
           <CommandInput
             value={searchValue}
-            onValueChange={(value) => {
-              setSearchValue(value);
+            onValueChange={(val) => {
+              setSearchValue(val);
               setTimeout(() => {
-                if (scrollAreaRef.current) {
-                  const viewportElement = scrollAreaRef.current.querySelector("[data-radix-scroll-area-viewport]");
-                  if (viewportElement) {
-                    viewportElement.scrollTop = 0;
-                  }
+                const viewportElement = scrollAreaRef.current?.querySelector("[data-radix-scroll-area-viewport]");
+                if (viewportElement) {
+                  viewportElement.scrollTop = 0;
                 }
               }, 0);
             }}
@@ -108,18 +102,18 @@ const CountrySelect = ({ disabled, value: selectedCountry, options: countryList,
             <ScrollArea ref={scrollAreaRef} className="h-72">
               <CommandEmpty>No country found.</CommandEmpty>
               <CommandGroup>
-                {countryList.map(({ value, label }) =>
-                  value ? (
+                {countryList
+                  .filter(({ value }) => value !== undefined)
+                  .map(({ value, label }) => (
                     <CountrySelectOption
-                      key={value}
-                      country={value}
+                      key={String(value)}
+                      country={value as RPNInput.Country}
                       countryName={label}
                       selectedCountry={selectedCountry}
                       onChange={onChange}
                       onSelectComplete={() => setIsOpen(false)}
                     />
-                  ) : null
-                )}
+                  ))}
               </CommandGroup>
             </ScrollArea>
           </CommandList>
@@ -159,10 +153,9 @@ const CountrySelectOption = ({
 
 const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
   const Flag = flags[country];
-
   return (
     <span className="flex h-4 w-6 overflow-hidden rounded-sm bg-foreground/20 [&_svg:not([class*='size-'])]:size-full">
-      {Flag && <Flag title={countryName} />}
+      {Flag ? <Flag title={countryName} /> : null}
     </span>
   );
 };
