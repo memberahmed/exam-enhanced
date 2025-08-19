@@ -1,13 +1,13 @@
 import AuthStaticSection from "@/components/comman/auth-static-section";
-import { LoginForm } from "./components/login-form";
+import RgisterForm from "./_components/register-form";
 
-export default function Login() {
+export default function Singup() {
   return (
     <main>
       <section className="grid grid-cols-1 lg:grid-cols-2">
         <AuthStaticSection />
         <div className="flex justify-center items-center ">
-          <LoginForm />
+          <RgisterForm />
         </div>
       </section>
     </main>

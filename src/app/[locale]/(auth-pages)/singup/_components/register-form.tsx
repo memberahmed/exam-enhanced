@@ -13,7 +13,7 @@ import { useState } from "react";
 import FeedbackError from "@/components/comman/feedback-error";
 import PhoneInput from "./phone-input";
 import { parsePhoneNumber } from "react-phone-number-input";
-import useRegister from "../hooks/use-register";
+import useRegister from "../_hooks/use-register";
 import HaveAccount from "@/components/comman/have-account";
 
 export default function RgisterForm() {
@@ -47,8 +47,8 @@ export default function RgisterForm() {
         .max(30, { error: t("last-name-max") }),
       email: z.email({ error: t("email-required") }),
       password: z
-        .string({ error: t("password-repuired") })
-        .min(1, { error: t("password-repuired") })
+        .string({ error: t("password-required") })
+        .min(1, { error: t("password-required") })
         .regex(/[a-zA-Z]/, t("english-letters-only"))
         .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, {
           error: t("password-regex"),
@@ -91,7 +91,9 @@ export default function RgisterForm() {
         className="h-medium:py-10 py-20 flex flex-col [300px] sm:w-[350px] md:w-[400px] xl:w-[454px] justify-center h-medium:space-y-3 space-y-4"
       >
         {/* Form tietle */}
-        <h1 className=" text-blue-800 font-bold md:text-2xl leading-full tracking-none">{t("create-account")}</h1>
+        <h1 className=" text-custom-gray-800 font-inter font-bold md:text-2xl leading-full tracking-none">
+          {t("create-account")}
+        </h1>
 
         {/* Firsts namd and last name  */}
         <div className="flex flex-col  md:flex-row  md:space-x-3">
@@ -379,6 +381,7 @@ export default function RgisterForm() {
 
         {/* Submit */}
         <Button
+          disabled={(form.formState.isSubmitting && !form.formState.isValid) || isPending}
           className="h-medium:h-8 w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
           type="submit"
         >

@@ -11,7 +11,8 @@ import { Link } from "@/i18n/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import FeedbackError from "@/components/comman/feedback-error";
-import useLogin from "../hooks/use-login";
+import useLogin from "../_hooks/use-login";
+import HaveAccount from "@/components/comman/have-account";
 
 export function LoginForm() {
   //  Translations
@@ -27,8 +28,8 @@ export function LoginForm() {
   const FormSchema = z.object({
     email: z.email({ error: t("email-required") }),
     password: z
-      .string({ error: t("password-repuired") })
-      .min(1, { error: t("password-repuired") })
+      .string({ error: t("password-required") })
+      .min(1, { error: t("password-required") })
       .regex(/[a-zA-Z]/, t("english-letters-only"))
       .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, {
         error: t("password-regex"),
@@ -57,7 +58,7 @@ export function LoginForm() {
         className="flex flex-col [300px] sm:w-[350px] md:w-[400px] xl:w-[454px] justify-center space-y-4"
       >
         {/* Form tietle */}
-        <h1 className="text-blue-800 font-bold text-3xl leading-full tracking-none">Login</h1>
+        <h1 className="text-custom-gray-800 font-inter font-bold text-3xl leading-full tracking-none">{t("login")}</h1>
         {/* Email input */}
         <FormField
           control={form.control}
@@ -146,21 +147,13 @@ export function LoginForm() {
 
         {/* Submit */}
         <Button
-          disabled={(form.formState.isSubmitted && !form.formState.isValid) || isPending}
+          disabled={(form.formState.isSubmitting && !form.formState.isValid) || isPending}
           className="w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
           type="submit"
         >
           {isPending ? t("loading") : t("login")}
         </Button>
-        <p className="self-center font-GeistMono text-custom-gray-500 leading-full tracking-none pt-5">
-          {t.rich("forgot-password-link", {
-            link: (v) => (
-              <Link href={"/forgot-password"} className="text-custom-blue-600 text-[14px]">
-                {v}
-              </Link>
-            ),
-          })}
-        </p>
+        <HaveAccount />
       </form>
     </Form>
   );
