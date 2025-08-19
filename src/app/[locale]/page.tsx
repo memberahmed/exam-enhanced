@@ -1,3 +1,5 @@
+import PasswordFormSkeleton from "@/components/sekeltons/form-sekelton";
+
 export default function Home() {
   return (
     <main>
