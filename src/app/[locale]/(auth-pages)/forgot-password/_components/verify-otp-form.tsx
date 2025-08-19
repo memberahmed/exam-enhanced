@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Locale, useLocale, useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import FeedbackError from "@/components/comman/feedback-error";
 import HaveAccount from "@/components/comman/have-account";
 import Arrow from "@/components/comman/arrow";

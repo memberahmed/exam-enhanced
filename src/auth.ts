@@ -31,7 +31,7 @@ export const authOption: NextAuthOptions = {
         if ("code" in payLoad) {
           throw new Error(payLoad.message || "Something went wrong!!");
         }
-        console.log(payLoad);
+
         return {
           id: payLoad?.user._id,
           accessToken: payLoad?.token,
