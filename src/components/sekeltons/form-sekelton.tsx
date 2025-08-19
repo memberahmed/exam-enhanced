@@ -1,5 +1,4 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import { MoveRight } from "lucide-react";
 
 export default function PasswordFormSkeleton() {
   return (
