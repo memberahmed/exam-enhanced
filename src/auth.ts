@@ -27,7 +27,7 @@ export const authOption: NextAuthOptions = {
           headers: { ...HEADER_CONTENT_TYPE },
         });
         const payLoad: ApiResponse<LoginResponse> = await res.json();
-        payLoad;
+
         if ("code" in payLoad) {
           throw new Error(payLoad.message || "Something went wrong!!");
         }
