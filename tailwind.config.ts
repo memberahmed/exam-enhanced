@@ -16,6 +16,9 @@ const config: Config = {
         "h-medium": { raw: "(max-height: 700px)" },
         "h-short": { raw: "(max-height: 500px)" },
       },
+      fontSize: {
+        3.5: "14px",
+      },
       fontFamily: {
         inter: ["var(--font-inter)", "sans-serif"],
         mono: ["var(--font-geist-mono)"],
