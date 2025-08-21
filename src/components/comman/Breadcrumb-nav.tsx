@@ -1,14 +1,7 @@
 "use client";
 import Link from "next/link";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from "@/components/ui/breadcrumb";
 import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { SlashIcon } from "lucide-react";
@@ -16,7 +9,6 @@ import { SlashIcon } from "lucide-react";
 export function BreadcrumbNavLink() {
   const pathname = usePathname();
 
-  // نقسم الـ pathname ونشيل الفراغات
   const segments = pathname.split("/").filter(Boolean);
   console.log(pathname);
   return (

@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { EllipsisVertical, LogOut, UserRound } from "lucide-react";
+import { EllipsisVertical, UserRound } from "lucide-react";
 import Logout from "../comman/side-nav/components/logout/logout";
 import { useLocale, useTranslations } from "next-intl";
 import { Locales } from "@/i18n/routing";
