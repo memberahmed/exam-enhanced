@@ -55,5 +55,10 @@
   "resend": "Resend",
   "password-required": "Password is required",
   "otp-send": "An OTP code has been sent to your email",
-  "update-password": "Update Password"
+  "update-password": "Update Password",
+  "diplomas": "Diplomas",
+  "account-settings": "Account Settings",
+  "logout-successfull": "You have been logged out successfully.",
+  "profile": "Profile",
+  "log-out": "Log out"
 }

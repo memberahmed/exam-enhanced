@@ -31,7 +31,6 @@ export const authOption: NextAuthOptions = {
         if ("code" in payLoad) {
           throw new Error(payLoad.message || "Something went wrong!!");
         }
-
         return {
           id: payLoad?.user._id,
           accessToken: payLoad?.token,
@@ -43,7 +42,7 @@ export const authOption: NextAuthOptions = {
   callbacks: {
     jwt: ({ token, user }) => {
       if (user) {
-        token.token = user.accessToken;
+        token.accessToken = user.accessToken;
         token._id = user._id;
         token.username = user.username;
         token.firstName = user.firstName;
