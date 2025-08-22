@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Exam Enhanced
+
+## Environment variables
+
+Set the following for correct auth behavior in all environments:
+
+- `NEXTAUTH_URL`: Must be the public URL. Use `https://...` in production so NextAuth sets the `__Secure-next-auth.session-token` cookie; use `http://localhost:3000` locally (non-secure).
+- `NEXTAUTH_SECRET`: A strong secret used by NextAuth/JWT decode.
+- `API`: Backend base URL the app calls.
+
+The app derives the cookie name automatically via `AUTH_COOKIE` from `NEXTAUTH_URL`. If `NEXTAUTH_URL` starts with `https://`, the cookie name is `__Secure-next-auth.session-token`; otherwise it is `next-auth.session-token`.
