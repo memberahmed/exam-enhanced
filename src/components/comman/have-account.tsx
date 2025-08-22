@@ -7,7 +7,7 @@ export default function HaveAccount() {
     <p className="self-center font-GeistMono text-custom-gray-500 leading-full tracking-none pt-5 h-medium:pt-2">
       {t.rich("forgot-password-link", {
         link: (v) => (
-          <Link href={"/forgot-password"} className="text-custom-blue-600 text-[14px]">
+          <Link href={"/singup"} className="text-custom-blue-600 text-[14px]">
             {v}
           </Link>
         ),
