@@ -55,5 +55,10 @@
   "resend": "اعادة ارسال",
   "password-required": "كلمة المرور مطلوبة",
   "otp-send": "تم إرسال رمز OTP إلى بريدك الإلكتروني",
-  "update-password": "تحديث كلمة المرور"
+  "update-password": "تحديث كلمة المرور",
+  "diplomas": "الدبلومات",
+  "account-settings": "إعدادات الحساب",
+  "logout-successfull": "لقد تم تسجيل الدخول بنجاح.",
+  "profile": "حساب تعريفي",
+  "log-out": "تسجيل الخروج"
 }
