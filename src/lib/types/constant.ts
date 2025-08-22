@@ -2,4 +2,4 @@ export const HEADER_CONTENT_TYPE = {
   "Content-Type": "application/json",
 };
 
-export const NEXTAUTHCOOCKIES = "next-auth.session-token";
+export const AUTH_COOKIE = "next-auth.session-token";
