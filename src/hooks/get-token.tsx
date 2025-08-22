@@ -1,6 +1,6 @@
-import { AUTH_COOKIE } from "@/lib/types/constant";
 import { decode } from "next-auth/jwt";
 import { cookies } from "next/headers";
+import { AUTH_COOKIE } from "@/lib/types/constant";
 
 export default async function getUserToken() {
   // Get token
