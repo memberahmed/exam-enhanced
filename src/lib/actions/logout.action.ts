@@ -18,5 +18,9 @@ export async function logoutUser() {
 
   const payload: ApiResponse<LogoutResponse> = await res.json();
 
+  if ("code" in payload) {
+    throw new Error(payload.message);
+  }
+
   return payload;
 }

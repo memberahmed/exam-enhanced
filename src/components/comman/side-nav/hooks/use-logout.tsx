@@ -1,3 +1,4 @@
+"use cleint";
 import { useRouter } from "@/i18n/navigation";
 import { logoutUser } from "@/lib/actions/logout.action";
 import { useMutation } from "@tanstack/react-query";
@@ -19,8 +20,9 @@ export default function useLogout() {
   } = useMutation({
     mutationFn: async () => {
       const res = await logoutUser();
-
+      console.log(res);
       if ("code" in res) {
+        console.log(res.message);
         throw new Error(res.message);
       }
 
