@@ -11,6 +11,7 @@ import FeedbackError from "@/components/comman/feedback-error";
 import HaveAccount from "@/components/comman/have-account";
 import Arrow from "@/components/comman/arrow";
 import useSendOTP from "../_hooks/use-send-otp";
+import ToggleLang from "@/components/comman/toggle-lang";
 
 type SendOTPProps = {
   setStep: SetForgotPasswordForm;
@@ -44,8 +45,11 @@ export default function SendOTP({ setEmail, setStep }: SendOTPProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col [300px] sm:w-[350px] md:w-[400px] xl:w-[454px] justify-center space-y-4"
+        className="p-4 flex flex-col w-full max-w-[454px] justify-center space-y-4"
       >
+        {/* Toggle Lacoale */}
+        <ToggleLang />
+
         {/* Form headers */}
         <div>
           {/* Form tietle */}
