@@ -6,7 +6,7 @@ export default function Singup() {
     <main>
       <section className="grid grid-cols-1 lg:grid-cols-2">
         <AuthStaticSection />
-        <div className="flex justify-center items-center ">
+        <div className="flex flex-col justify-center items-center ">
           <RgisterForm />
         </div>
       </section>

@@ -12,6 +12,7 @@ import { useState } from "react";
 import FeedbackError from "@/components/comman/feedback-error";
 import useChangePassword from "../_hooks/use-change-password";
 import MoveBack from "./move-back";
+import ToggleLang from "@/components/comman/toggle-lang";
 
 type ChangePasswordProps = {
   step: CurrnetForgotPasswordForm;
@@ -69,8 +70,11 @@ export default function ChangePasswordForm({ setStep, step, email }: ChangePassw
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col [300px] sm:w-[350px] md:w-[400px] xl:w-[454px] justify-center space-y-4"
+        className="p-4 flex flex-col w-full max-w-[454px] justify-center space-y-4"
       >
+        {/* Toggle Lacoale */}
+        <ToggleLang />
+
         <MoveBack step={step} setStep={setStep} />
         <div className="pb-6">
           <h1 className="text-custom-gray-800 font-inter font-bold text-3xl leading-full tracking-none">

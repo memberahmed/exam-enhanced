@@ -6,7 +6,7 @@
   "auth-text-1": "Choose from specialized tracks like Frontend, Backend, and Mobile Development.",
   "auth-text-2": "Access topic-specific tests including HTML, CSS, JavaScript, and more",
   "auth-text-3": "Choose from specialized tracks like Frontend, Backend, and Mobile Development.",
-  "forgot-password-link": "Don't have an account? <link>Create yours</link>",
+  "forgot-password-link": "Don't have an account ? <link>Create yours</link>",
   "email-required": "Enter a valid email address (e.g., user@domain.com).",
   "password-regex": "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (#?!@$%^&*-).",
   "password-max": "Password must be at most 30 characters",
@@ -60,5 +60,8 @@
   "account-settings": "Account Settings",
   "logout-successfull": "You have been logged out successfully.",
   "profile": "Profile",
-  "log-out": "Log out"
+  "log-out": "Log out",
+  "select-language": "Select Language",
+  "already-have-an-account": "Already have an account <link>Login</link>",
+  "exam-app": "<span></span> Exam App "
 }
