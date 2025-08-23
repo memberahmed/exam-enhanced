@@ -10,6 +10,8 @@ import Spinner from "../sppiner";
 import AccountDorpdown from "../../custom/account-dropdown-menu";
 import { useState } from "react";
 import { Menu } from "lucide-react";
+import ToggleLang from "../toggle-lang";
+import ExamFolderIcon from "../folder-icon";
 
 type Link = {
   name: string;
@@ -35,16 +37,18 @@ export default function SideNav() {
   const [toggleNav, setToggleNav] = useState(false);
   return (
     <nav className="bg-custom-blue-50 space-y-5 md:min-h-screen flex flex-col border-r p-5 md:p-10">
+      <ToggleLang />
       {/* Logo image */}
       <div className="flex justify-between md:mb-14 mb-6 items-center ">
         <div className="relative w-48 h-9 ">
-          <Image fill className="h-full w-full object-cover" src="/assets/images/logo.png" alt="" />
+          <Image sizes="100%" fill className="h-full w-full object-cover" src="/assets/images/logo.png" alt="" />
         </div>
 
         {/* Phone toggle icon */}
         <Menu size={35} onClick={() => setToggleNav(!toggleNav)} className="cursor-pointer md:hidden" />
       </div>
 
+      <ExamFolderIcon />
       {/* Links and Dropdown (Toggled Together) */}
       <div className={`${toggleNav ? "flex" : "hidden"} md:flex flex-col flex-1`}>
         {/* Links */}
@@ -71,7 +75,7 @@ export default function SideNav() {
         <div className="md:mt-auto flex xl:gap-x-3 gap-y-2 flex-col xl:flex-row">
           {/* Profile Image */}
           <Avatar className="size-14 border  border-custom-blue-600 rounded-none">
-            <AvatarImage src="/assets/images/avatar.png" alt="Hallie Richards" />
+            <AvatarImage sizes="100%" src="/assets/images/avatar.png" alt="Hallie Richards" />
             <AvatarFallback className="text-xs">
               <Spinner />
             </AvatarFallback>

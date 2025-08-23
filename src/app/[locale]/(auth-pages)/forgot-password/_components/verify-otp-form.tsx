@@ -16,6 +16,7 @@ import { Locales } from "@/i18n/routing";
 import useVerifyOTP from "../_hooks/use-verify-otp";
 import useResendOTP from "../_hooks/use-resend-otp";
 import MoveBack from "./move-back";
+import ToggleLang from "@/components/comman/toggle-lang";
 
 type VerifyOTPProps = {
   step: CurrnetForgotPasswordForm;
@@ -88,8 +89,11 @@ export default function VerifyOTP({ email, setStep, step }: VerifyOTPProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col [300px] sm:w-[350px] md:w-[400px] xl:w-[454px] justify-center space-y-4"
+        className="p-4 flex flex-col w-full max-w-[454px] justify-center space-y-4"
       >
+        {/* Toggle Lacoale */}
+        <ToggleLang />
+
         <MoveBack step={step} setStep={setStep} />
         {/* Form headers */}
         <div className="pb-6">
