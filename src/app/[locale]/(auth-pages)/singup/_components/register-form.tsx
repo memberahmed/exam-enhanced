@@ -14,7 +14,6 @@ import FeedbackError from "@/components/comman/feedback-error";
 import PhoneInput from "./phone-input";
 import { parsePhoneNumber } from "react-phone-number-input";
 import useRegister from "../_hooks/use-register";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Locales } from "@/i18n/routing";
 import ToggleLang from "@/components/comman/toggle-lang";
 
@@ -22,6 +21,7 @@ export default function RgisterForm() {
   //  Translations
   const t = useTranslations();
   const locale = useLocale() as Locales;
+
   // Hooks
   const { isPending, error, register } = useRegister();
 
@@ -87,329 +87,330 @@ export default function RgisterForm() {
   }
 
   return (
-    <ScrollArea
-      dir={locale === "ar" ? "rtl" : "ltr"}
-      className=" px-5 flex justify-center items-center h-[calc(100vh-75px)] "
-    >
-      {/* Toggle Lacoale */}
-      <ToggleLang />
+    <Form {...form}>
+      <form
+        dir={locale === "ar" ? "rtl" : "ltr"}
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="p-4 flex mt-2 flex-col w-full max-w-[454px] justify-center h-medium:space-y-3 space-y-4"
+      >
+        {/* Toggle Lacoale */}
+        <ToggleLang />
 
-      {/* Register form */}
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="p-4  flex mt-2 flex-col w-full max-w-[454px] justify-center h-medium:space-y-3 space-y-4"
-        >
-          {/* Form tietle */}
-          <h1 className=" text-custom-gray-800 font-inter font-bold md:text-2xl leading-full tracking-none">
-            {t("create-account")}
-          </h1>
+        {/* Form tietle */}
+        <h1 className=" text-custom-gray-800 font-inter font-bold md:text-2xl leading-full tracking-none">
+          {t("create-account")}
+        </h1>
 
-          {/* Firsts namd and last name  */}
-          <div className="flex flex-col  md:flex-row  md:space-x-3">
-            {/* FirstName input */}
-            <FormField
-              control={form.control}
-              name="firstName"
-              render={({ field }) => (
-                <FormItem>
-                  {/* First name label */}
-                  <FormLabel
-                    htmlFor="firstName"
-                    className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none "
-                  >
-                    {t("first-name-label")}
-                  </FormLabel>
-
-                  {/* First text input */}
-                  <FormControl>
-                    <Input
-                      id="firstName"
-                      className={`h-medium:h-8 rtl:me-3  md:w-[221px] ${
-                        form.formState.errors.firstName ? "border-custom-red-600 focus-visible:ring-0" : ""
-                      }`}
-                      autoComplete="given-name"
-                      placeholder="Ahmed"
-                      {...field}
-                    />
-                  </FormControl>
-
-                  {/* Error message */}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Last name input */}
-            <FormField
-              control={form.control}
-              name="lastName"
-              render={({ field }) => (
-                <FormItem>
-                  {/* Last name label */}
-                  <FormLabel
-                    htmlFor="lastName"
-                    className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none "
-                  >
-                    {t("last-name-label")}
-                  </FormLabel>
-
-                  {/* Last name text input */}
-                  <FormControl>
-                    <Input
-                      id="lastName"
-                      className={`h-medium:h-8 md:w-[221px] ${
-                        form.formState.errors.lastName ? "border-custom-red-600 focus-visible:ring-0" : ""
-                      }`}
-                      autoComplete="family-name"
-                      placeholder="Hassan"
-                      {...field}
-                    />
-                  </FormControl>
-
-                  {/* Error message */}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          {/* UserName input  */}
+        {/* Firsts namd and last name  */}
+        <div className="flex flex-col md:flex-row gap-5">
+          {/* FirstName input */}
           <FormField
             control={form.control}
-            name="username"
+            name="firstName"
+            render={({ field }) => (
+              <FormItem>
+                {/* First name label */}
+                <FormLabel
+                  htmlFor="firstName"
+                  className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none "
+                >
+                  {t("first-name-label")}
+                </FormLabel>
+
+                {/* First text input */}
+                <FormControl>
+                  <Input
+                    id="firstName"
+                    className={`h-12 rtl:me-3   ${
+                      form.formState.errors.firstName ? "border-custom-red-600 focus-visible:ring-0" : ""
+                    }`}
+                    autoComplete="given-name"
+                    placeholder="Ahmed"
+                    {...field}
+                  />
+                </FormControl>
+
+                {/* Error message */}
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Last name input */}
+          <FormField
+            control={form.control}
+            name="lastName"
             render={({ field }) => (
               <FormItem>
                 {/* Last name label */}
                 <FormLabel
-                  htmlFor="username"
+                  htmlFor="lastName"
                   className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none "
                 >
-                  {t("user-name-label")}
+                  {t("last-name-label")}
                 </FormLabel>
+
                 {/* Last name text input */}
                 <FormControl>
                   <Input
-                    id="username"
-                    className={`h-medium:h-8  ${
-                      form.formState.errors.username ? "border-custom-red-600 focus-visible:ring-0" : ""
+                    id="lastName"
+                    className={`h-12  ${
+                      form.formState.errors.lastName ? "border-custom-red-600 focus-visible:ring-0" : ""
                     }`}
                     autoComplete="family-name"
-                    placeholder="Hamed95"
+                    placeholder="Hassan"
                     {...field}
                   />
                 </FormControl>
+
                 {/* Error message */}
                 <FormMessage />
               </FormItem>
             )}
           />
+        </div>
 
-          {/* Email input */}
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                {/* Email label */}
-                <FormLabel
-                  htmlFor="email"
-                  className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none "
+        {/* UserName input  */}
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              {/* Last name label */}
+              <FormLabel
+                htmlFor="username"
+                className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none "
+              >
+                {t("user-name-label")}
+              </FormLabel>
+              {/* Last name text input */}
+              <FormControl>
+                <Input
+                  id="username"
+                  className={`h-12  ${
+                    form.formState.errors.username ? "border-custom-red-600 focus-visible:ring-0" : ""
+                  }`}
+                  autoComplete="family-name"
+                  placeholder="Hamed95"
+                  {...field}
+                />
+              </FormControl>
+              {/* Error message */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Email input */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              {/* Email label */}
+              <FormLabel
+                htmlFor="email"
+                className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none "
+              >
+                {t("email-label")}
+              </FormLabel>
+              {/* Email text input */}
+              <FormControl>
+                <Input
+                  id="email"
+                  className={`h-12 ${form.formState.errors.email ? "border-custom-red-600 focus-visible:ring-0" : ""}`}
+                  autoComplete="email"
+                  placeholder="user@example.com"
+                  {...field}
+                />
+              </FormControl>
+              {/* Error message */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Phone input  */}
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              {/* Password label */}
+              <FormLabel
+                htmlFor="phone"
+                className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none"
+              >
+                {t("phone-label")}
+              </FormLabel>
+              {/* Phone text input */}
+              <FormControl>
+                <PhoneInput
+                  id="phone"
+                  onChange={(value) => {
+                    if (!value) return field.onChange("");
+                    const phoneNumber = parsePhoneNumber(value);
+                    if (phoneNumber) {
+                      // In casae the back end acceptes the internatoinal number make onChane = {field.onChange}
+                      const localNumber =
+                        phoneNumber.country === "EG" ? "0" + phoneNumber.nationalNumber : phoneNumber.nationalNumber;
+
+                      field.onChange(localNumber);
+                    } else {
+                      field.onChange("");
+                    }
+                  }}
+                  international
+                  className={`${
+                    form.formState.errors.phone ? "border-custom-red-600 border focus-visible:ring-0" : ""
+                  }`}
+                  defaultCountry="EG"
+                />
+              </FormControl>
+              {/* Error message */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Password input  */}
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              {/* Password label */}
+              <FormLabel
+                htmlFor="password"
+                className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none"
+              >
+                {t("password-label")}
+              </FormLabel>
+
+              {/* Password text */}
+              <FormControl>
+                <div
+                  className={`h-12 flex items-center border focus-within:ring-0 focus-within:ring-custom-blue-600 focus-within:border-custom-blue-600 ${
+                    form.formState.errors.password ? "border-custom-red-600 " : ""
+                  } `}
                 >
-                  {t("email-label")}
-                </FormLabel>
-                {/* Email text input */}
-                <FormControl>
                   <Input
-                    id="email"
-                    className={`h-medium:h-8 ${
-                      form.formState.errors.email ? "border-custom-red-600 focus-visible:ring-0" : ""
-                    }`}
-                    autoComplete="email"
-                    placeholder="user@example.com"
+                    autoComplete="current-password"
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    className="border-none focus-visible:ring-0"
+                    placeholder="***********"
                     {...field}
                   />
-                </FormControl>
-                {/* Error message */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
 
-          {/* Phone input  */}
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                {/* Password label */}
-                <FormLabel
-                  htmlFor="phone"
-                  className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none"
+                  {/* Button to toggle the show the confirm password */}
+                  {!showPassword ? (
+                    <Eye
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={`relative cursor-pointer   text-custom-gray-500  ${
+                        locale === "ar" ? "left-2.5" : "right-2.5"
+                      }`}
+                    />
+                  ) : (
+                    <EyeOff
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={`relative cursor-pointer   text-custom-gray-500  ${
+                        locale === "ar" ? "left-2.5" : "right-2.5"
+                      }`}
+                    />
+                  )}
+                </div>
+              </FormControl>
+              {/* Error message */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* RePassword input  */}
+        <FormField
+          control={form.control}
+          name="rePassword"
+          render={({ field }) => (
+            <FormItem>
+              {/* Password label */}
+              <FormLabel
+                htmlFor="rePassword"
+                className=" font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none"
+              >
+                {t("confirm-password-label")}
+              </FormLabel>
+              {/* RePassword text */}
+              <FormControl>
+                <div
+                  className={`h-12 flex items-center border focus-within:ring-0 focus-within:ring-custom-blue-600 focus-within:border-custom-blue-600 ${
+                    form.formState.errors.rePassword ? "border-custom-red-600 " : ""
+                  } `}
                 >
-                  {t("phone-label")}
-                </FormLabel>
-                {/* Phone text input */}
-                <FormControl>
-                  <PhoneInput
-                    id="phone"
-                    onChange={(value) => {
-                      if (!value) return field.onChange("");
-                      const phoneNumber = parsePhoneNumber(value);
-                      if (phoneNumber) {
-                        // In casae the back end acceptes the internatoinal number make onChane = {field.onChange}
-                        const localNumber =
-                          phoneNumber.country === "EG" ? "0" + phoneNumber.nationalNumber : phoneNumber.nationalNumber;
-
-                        field.onChange(localNumber);
-                      } else {
-                        field.onChange("");
-                      }
-                    }}
-                    international
-                    className={`${
-                      form.formState.errors.phone ? "border-custom-red-600 border focus-visible:ring-0" : ""
-                    }`}
-                    defaultCountry="EG"
+                  <Input
+                    autoComplete="current-password"
+                    id="rePassword"
+                    type={showRePassword ? "text" : "password"}
+                    className="border-none focus-visible:ring-0"
+                    placeholder="***********"
+                    {...field}
                   />
-                </FormControl>
-                {/* Error message */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
 
-          {/* Password input  */}
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                {/* Password label */}
-                <FormLabel
-                  htmlFor="password"
-                  className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none"
-                >
-                  {t("password-label")}
-                </FormLabel>
-
-                {/* Password text */}
-                <FormControl>
-                  <div
-                    className={`h-medium:h-8 flex items-center border focus-within:ring-0 focus-within:ring-custom-blue-600 focus-within:border-custom-blue-600 ${
-                      form.formState.errors.password ? "border-custom-red-600 " : ""
-                    } `}
-                  >
-                    <Input
-                      autoComplete="current-password"
-                      id="password"
-                      type={showPassword ? "text" : "password"}
-                      className="border-none focus-visible:ring-0"
-                      placeholder="***********"
-                      {...field}
+                  {/* Icon to toggle the show the confirm password */}
+                  {!showRePassword ? (
+                    <Eye
+                      onClick={() => setShowRePassword(!showRePassword)}
+                      className={`relative cursor-pointer   text-custom-gray-500  ${
+                        locale === "ar" ? "left-2.5" : "right-2.5"
+                      }`}
                     />
-
-                    {/* Button to toggle the show the confirm password */}
-                    {!showPassword ? (
-                      <Eye
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
-                      />
-                    ) : (
-                      <EyeOff
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
-                      />
-                    )}
-                  </div>
-                </FormControl>
-                {/* Error message */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* RePassword input  */}
-          <FormField
-            control={form.control}
-            name="rePassword"
-            render={({ field }) => (
-              <FormItem>
-                {/* Password label */}
-                <FormLabel
-                  htmlFor="rePassword"
-                  className=" font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none"
-                >
-                  {t("confirm-password-label")}
-                </FormLabel>
-                {/* RePassword text */}
-                <FormControl>
-                  <div
-                    className={`h-medium:h-8 flex items-center border focus-within:ring-0 focus-within:ring-custom-blue-600 focus-within:border-custom-blue-600 ${
-                      form.formState.errors.rePassword ? "border-custom-red-600 " : ""
-                    } `}
-                  >
-                    <Input
-                      autoComplete="current-password"
-                      id="rePassword"
-                      type={showRePassword ? "text" : "password"}
-                      className="border-none focus-visible:ring-0"
-                      placeholder="***********"
-                      {...field}
+                  ) : (
+                    <EyeOff
+                      onClick={() => setShowRePassword(!showRePassword)}
+                      className={`relative cursor-pointer   text-custom-gray-500  ${
+                        locale === "ar" ? "left-2.5" : "right-2.5"
+                      }`}
                     />
+                  )}
+                </div>
+              </FormControl>
+              {/* Error message */}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-                    {/* Icon to toggle the show the confirm password */}
-                    {!showRePassword ? (
-                      <Eye
-                        onClick={() => setShowRePassword(!showRePassword)}
-                        className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
-                      />
-                    ) : (
-                      <EyeOff
-                        onClick={() => setShowRePassword(!showRePassword)}
-                        className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
-                      />
-                    )}
-                  </div>
-                </FormControl>
-                {/* Error message */}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        {/* Forgot password Lable */}
+        <Link
+          href={"/forgot-password"}
+          className="text-custom-blue-600 font-GeistMono font-medium text-base leading-full tracking-none self-end"
+        >
+          {t("forgot-your-password")}
+        </Link>
 
-          {/* Forgot password Lable */}
-          <Link
-            href={"/forgot-password"}
-            className="text-custom-blue-600 font-GeistMono font-medium text-base leading-full tracking-none self-end"
-          >
-            {t("forgot-your-password")}
-          </Link>
+        {/* Feedback message */}
+        <FeedbackError error={error?.message} />
 
-          {/* Feedback message */}
-          <FeedbackError error={error?.message} />
+        {/* Submit */}
+        <Button
+          disabled={(form.formState.isSubmitting && !form.formState.isValid) || isPending}
+          className="h-12 w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
+          type="submit"
+        >
+          {isPending ? t("loading") : t("signup")}
+        </Button>
 
-          {/* Submit */}
-          <Button
-            disabled={(form.formState.isSubmitting && !form.formState.isValid) || isPending}
-            className="h-medium:h-8 w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
-            type="submit"
-          >
-            {isPending ? t("loading") : t("signup")}
-          </Button>
-
-          {/* Have an account link */}
-          <p className="self-center font-GeistMono text-custom-gray-500 leading-full tracking-none pt-5 h-medium:pt-2">
-            {t.rich("already-have-an-account", {
-              link: (v) => (
-                <Link className="text-custom-blue-600" href={"/login"}>
-                  {v}
-                </Link>
-              ),
-            })}
-          </p>
-        </form>
-      </Form>
-    </ScrollArea>
+        {/* Have an account link */}
+        <p className="self-center font-GeistMono text-custom-gray-500 leading-full tracking-none pt-5 h-medium:pt-2">
+          {t.rich("already-have-an-account", {
+            link: (v) => (
+              <Link className="text-custom-blue-600" href={"/login"}>
+                {v}
+              </Link>
+            ),
+          })}
+        </p>
+      </form>
+    </Form>
   );
 }

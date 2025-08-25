@@ -6,13 +6,14 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import FeedbackError from "@/components/comman/feedback-error";
 import useChangePassword from "../_hooks/use-change-password";
 import MoveBack from "./move-back";
 import ToggleLang from "@/components/comman/toggle-lang";
+import { Locales } from "@/i18n/routing";
 
 type ChangePasswordProps = {
   step: CurrnetForgotPasswordForm;
@@ -21,12 +22,18 @@ type ChangePasswordProps = {
 };
 
 export default function ChangePasswordForm({ setStep, step, email }: ChangePasswordProps) {
+  // Translatoin
   const t = useTranslations();
+  const locale = useLocale() as Locales;
+
+  // Hooks
   const { isPending, error, changePassword } = useChangePassword();
+
+  // States
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
 
-  // Updated Schema
+  // Form schema
   const FormSchema = z
     .object({
       email: z.email(),
@@ -45,6 +52,7 @@ export default function ChangePasswordForm({ setStep, step, email }: ChangePassw
       path: ["newPassword"], // error shows under confirmPassword field
     });
 
+  // Form Hook
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -54,21 +62,21 @@ export default function ChangePasswordForm({ setStep, step, email }: ChangePassw
     },
   });
 
+  // Functions
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
-
     // Map form data to backend format
     const payload = {
       email: email,
       newPassword: data.newPassword,
     };
-    console.log(payload);
+
     changePassword(payload);
   }
 
   return (
     <Form {...form}>
       <form
+        dir={locale === "ar" ? "rtl" : "ltr"}
         onSubmit={form.handleSubmit(onSubmit)}
         className="p-4 flex flex-col w-full max-w-[454px] justify-center space-y-4"
       >
@@ -141,12 +149,16 @@ export default function ChangePasswordForm({ setStep, step, email }: ChangePassw
                   {!showPassword ? (
                     <Eye
                       onClick={() => setShowPassword(!showPassword)}
-                      className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
+                      className={`relative cursor-pointer   text-custom-gray-500  ${
+                        locale === "ar" ? "left-2.5" : "right-2.5"
+                      }`}
                     />
                   ) : (
                     <EyeOff
                       onClick={() => setShowPassword(!showPassword)}
-                      className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
+                      className={`relative cursor-pointer   text-custom-gray-500  ${
+                        locale === "ar" ? "left-2.5" : "right-2.5"
+                      }`}
                     />
                   )}
                 </div>
@@ -185,12 +197,16 @@ export default function ChangePasswordForm({ setStep, step, email }: ChangePassw
                   {!showNewPassword ? (
                     <Eye
                       onClick={() => setShowNewPassword(!showNewPassword)}
-                      className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
+                      className={`relative cursor-pointer   text-custom-gray-500  ${
+                        locale === "ar" ? "left-2.5" : "right-2.5"
+                      }`}
                     />
                   ) : (
                     <EyeOff
                       onClick={() => setShowNewPassword(!showNewPassword)}
-                      className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
+                      className={`relative cursor-pointer   text-custom-gray-500  ${
+                        locale === "ar" ? "left-2.5" : "right-2.5"
+                      }`}
                     />
                   )}
                 </div>
