@@ -37,11 +37,11 @@ const authText: AuthText[] = [
 export default function AuthStaticSection() {
   const t = useTranslations();
   return (
-    <div className="lg:min-h-screen space-y-10 flex flex-col  bg-gradient-to-b from-custom-blue-300 to-white">
-      <div className=" pb-6 p-4 sm:p-12 md:p-24 ">
+    <div className="lg:min-h-screen space-y-10 flex flex-col justify-center items-center bg-gradient-to-b from-custom-blue-300 to-white">
+      <div className="flex flex-col  p-6 sm:p-12 md:p-24 ">
         <ExamFolderIcon />
 
-        <div className="h-tall:mt-[136px] ">
+        <div className="h-tall:pt-[136px]  pt-10 flex-col flex items-center justify-center ">
           {" "}
           {/* Header */}
           <h2 className="font-bold pt-6 rtl:ps-2 pe-4 text-3xl leading-full tracking-none font-inter text-custom-blue-800 ">

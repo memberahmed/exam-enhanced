@@ -6,12 +6,13 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import FeedbackError from "@/components/comman/feedback-error";
 import HaveAccount from "@/components/comman/have-account";
 import Arrow from "@/components/comman/arrow";
 import useSendOTP from "../_hooks/use-send-otp";
 import ToggleLang from "@/components/comman/toggle-lang";
+import { Locales } from "@/i18n/routing";
 
 type SendOTPProps = {
   setStep: SetForgotPasswordForm;
@@ -20,6 +21,7 @@ type SendOTPProps = {
 export default function SendOTP({ setEmail, setStep }: SendOTPProps) {
   //  Translations
   const t = useTranslations();
+  const locale = useLocale() as Locales;
 
   //  Hooks
   const { isPending, error, sendOTP } = useSendOTP({ setStep, setEmail });
@@ -44,6 +46,7 @@ export default function SendOTP({ setEmail, setStep }: SendOTPProps) {
   return (
     <Form {...form}>
       <form
+        dir={locale === "ar" ? "rtl" : "ltr"}
         onSubmit={form.handleSubmit(onSubmit)}
         className="p-4 flex flex-col w-full max-w-[454px] justify-center space-y-4"
       >
