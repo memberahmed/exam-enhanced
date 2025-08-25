@@ -6,7 +6,15 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
   transpilePackages: ["geist"],
-  images: {},
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "exam.elevateegy.com",
+        pathname: "/uploads/categories/**",
+      },
+    ],
+  },
   redirects: () => {
     return [
       {

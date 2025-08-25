@@ -63,5 +63,12 @@
   "log-out": "Log out",
   "select-language": "Select Language",
   "already-have-an-account": "Already have an account <link>Login</link>",
-  "exam-app": "<span></span> Exam App "
+  "exam-app": "<span></span> Exam App ",
+  "diplomas-and-icon": "<span></span> Diplomas",
+  "logging-out": "Logging out",
+  "exams-and-icon": "<span></span> Exams",
+  "the-end": "the end",
+  "scroll-to-view-more": "Scroll to view more <span></span>",
+  "page-not-found": "Page Not Found",
+  "go-home": "Go Home"
 }
