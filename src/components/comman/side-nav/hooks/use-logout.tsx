@@ -1,5 +1,4 @@
 "use cleint";
-import { useRouter } from "@/i18n/navigation";
 import { logoutUser } from "@/lib/actions/logout.action";
 import { useMutation } from "@tanstack/react-query";
 import { signOut } from "next-auth/react";
@@ -10,15 +9,15 @@ export default function useLogout() {
   // Translation
   const t = useTranslations();
 
-  //  Navigation
-  const router = useRouter();
-
   const {
     error,
     isPending,
     mutate: logout,
   } = useMutation({
     mutationFn: async () => {
+      // Start loading toast
+      toast.loading(t("logging-out"), { id: "logout" });
+
       const res = await logoutUser();
       console.log(res);
       if ("code" in res) {
@@ -29,17 +28,15 @@ export default function useLogout() {
       // Next auth sign out and coockies delation
       await signOut({ redirect: false });
     },
-    onError: () => {
-      //  Tosast for error
-      toast.error(error?.message || t("something-went-wrong"));
+
+    onError: (err: ErrorResponse) => {
+      toast.error(err?.message || t("something-went-wrong"), { id: "logout" });
     },
     onSuccess: () => {
-      // Toast for success
-      toast.success(t("logout-successfull"));
-
-      // routing to login page
-      router.push("/login");
+      toast.success(t("logout-successfull"), { id: "logout" });
+      window.location.replace("/login");
     },
   });
+
   return { error, isPending, logout };
 }
