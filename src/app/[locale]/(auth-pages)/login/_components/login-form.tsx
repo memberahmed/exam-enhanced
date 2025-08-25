@@ -6,7 +6,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
@@ -14,10 +14,12 @@ import FeedbackError from "@/components/comman/feedback-error";
 import useLogin from "../_hooks/use-login";
 import HaveAccount from "@/components/comman/have-account";
 import ToggleLang from "@/components/comman/toggle-lang";
+import { Locales } from "@/i18n/routing";
 
 export function LoginForm() {
   //  Translations
   const t = useTranslations();
+  const locale = useLocale() as Locales;
 
   //  Hooks
   const { isPending, error, login } = useLogin();
@@ -56,6 +58,7 @@ export function LoginForm() {
     <>
       <Form {...form}>
         <form
+          dir={locale === "ar" ? "rtl" : "ltr"}
           onSubmit={form.handleSubmit(onSubmit)}
           className="p-4 flex flex-col w-full max-w-[454px] justify-center space-y-4"
         >
@@ -66,6 +69,7 @@ export function LoginForm() {
           <h1 className="text-custom-gray-800 font-inter font-bold text-3xl leading-full tracking-none">
             {t("login")}
           </h1>
+
           {/* Email input */}
           <FormField
             control={form.control}
@@ -94,6 +98,7 @@ export function LoginForm() {
               </FormItem>
             )}
           />
+
           {/* Password input  */}
           <FormField
             control={form.control}
@@ -122,15 +127,20 @@ export function LoginForm() {
                       placeholder="***********"
                       {...field}
                     />
+
                     {!showPassword ? (
                       <Eye
                         onClick={() => setShowPassword(!showPassword)}
-                        className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
+                        className={`relative cursor-pointer   text-custom-gray-500  ${
+                          locale === "ar" ? "left-2.5" : "right-2.5"
+                        }`}
                       />
                     ) : (
                       <EyeOff
                         onClick={() => setShowPassword(!showPassword)}
-                        className="cursor-pointer text-custom-gray-500 relative ltr:right-2 rtl:left-2"
+                        className={`relative cursor-pointer   text-custom-gray-500  ${
+                          locale === "ar" ? "left-2.5" : "right-2.5"
+                        }`}
                       />
                     )}
                   </div>
