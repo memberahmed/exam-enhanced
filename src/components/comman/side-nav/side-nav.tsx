@@ -11,7 +11,6 @@ import AccountDorpdown from "../../custom/account-dropdown-menu";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import ToggleLang from "../toggle-lang";
-import ExamFolderIcon from "../folder-icon";
 
 type Link = {
   name: string;
@@ -37,7 +36,9 @@ export default function SideNav() {
   const [toggleNav, setToggleNav] = useState(false);
   return (
     <nav className="bg-custom-blue-50 space-y-5 md:min-h-screen flex flex-col border-r p-5 md:p-10">
+      {/* Toggle language  */}
       <ToggleLang />
+
       {/* Logo image */}
       <div className="flex justify-between md:mb-14 mb-6 items-center ">
         <div className="relative w-48 h-9 ">
@@ -48,7 +49,6 @@ export default function SideNav() {
         <Menu size={35} onClick={() => setToggleNav(!toggleNav)} className="cursor-pointer md:hidden" />
       </div>
 
-      <ExamFolderIcon />
       {/* Links and Dropdown (Toggled Together) */}
       <div className={`${toggleNav ? "flex" : "hidden"} md:flex flex-col flex-1`}>
         {/* Links */}

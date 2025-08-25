@@ -6,6 +6,10 @@ import Providers from "@/components/providers";
 import { Inter } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { Toaster } from "sonner";
+import SideNav from "@/components/comman/side-nav/side-nav";
+import { getServerSession } from "next-auth";
+import { authOption } from "@/auth";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,10 +30,27 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const seseeion = await getServerSession(authOption);
+
   return (
     <html className={`${inter.variable} ${GeistMono.variable} `} lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="flex flex-col md:flex-row ">
+            {/* Side Navigation */}
+            {seseeion && (
+              <div className="md:w-4/12 lg:w-3/12 w-full">
+                {" "}
+                <SideNav />
+              </div>
+            )}
+
+            {/* Children */}
+            <ScrollArea className={`h-screen ${!seseeion?._id ? "w-full" : "md:w-8/12 lg:w-9/12 w-full "}`}>
+              <div className="">{children}</div>
+            </ScrollArea>
+          </div>
+        </Providers>
         <Toaster position="top-center" />
       </body>
     </html>
