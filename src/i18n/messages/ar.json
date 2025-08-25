@@ -63,5 +63,12 @@
   "log-out": "تسجيل الخروج",
   "select-language": "حدد اللغة",
   "already-have-an-account": "لديك بالفعل حساب <link>سجل دخول</link>",
-  "exam-app": "<span></span> تطبيق الامتحان "
+  "exam-app": "<span></span> تطبيق الامتحان ",
+  "diplomas-and-icon": "<span></span> الدبلومات",
+  "logging-out": "تسجيل الخروج",
+  "exams-and-icon": "<span></span> الامتحانات",
+  "the-end": "النهاية",
+  "scroll-to-view-more": "قم بالتمرير لعرض المزيد <span> </span>",
+  "page-not-found": "الصفحة لم يتم العثور عليها",
+  "go-home": "اذهب إلى المنزل"
 }
