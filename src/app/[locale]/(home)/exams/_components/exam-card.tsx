@@ -1,0 +1,65 @@
+"use client";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { useDirection } from "@/lib/utils/get-dirrction.util";
+import { Timer } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+type ExamsProps = {
+  exam: Exam;
+};
+
+export default function ExamCard({ exam }: ExamsProps) {
+  // Translation
+  const t = useTranslations();
+
+  // Hooks
+  const dir = useDirection();
+
+  // Navigation
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Functions
+
+  const handlClick = (id: string) => {
+    router.push(`${pathname}/${id}`);
+  };
+
+  return (
+    <div
+      dir={dir}
+      onClick={() => handlClick(exam._id)}
+      className="cursor-pointer flex justify-between items-center h-20 bg-custom-blue-50 p-4"
+    >
+      {/* Title no. of question */}
+      <div className="space-y-1 tracking-none leading-full">
+        {/* Title */}
+        <h2 className="font-semibold text-custom-blue-600 text-2xl tracking-none leading-full font-GeistMono ">
+          {exam.title}
+        </h2>
+
+        {/* Questions number */}
+        <h3 className="font-normal font-GeistMono text-sm tracking-none leading-full text-custom-gray-500 ">
+          {t.rich("exam-numberofquestions", {
+            span: () => <span>{exam.numberOfQuestions}</span>,
+          })}
+        </h3>
+      </div>
+
+      {/* Duration  */}
+
+      <div className="flex gap-x-1.5 font-GeistMono">
+        <span>
+          <Timer className="text-custom-gray-400" />
+        </span>
+        <p className="p-1  text-sm text-custom-gray-800 ">
+          <span className="font-medium tracking-none leading-full ">{t("duration")}</span>:
+          <span className="tracking-none leading-full font-normal">
+            {" "}
+            {exam.duration} {t("minutes")}
+          </span>
+        </p>
+      </div>
+    </div>
+  );
+}

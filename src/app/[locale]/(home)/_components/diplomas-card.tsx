@@ -17,7 +17,7 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
 
   const handlClick = (id: string) => {
     query.set("subject", id);
-    router.replace(`exams?${query.toString()}`);
+    router.push(`/exams?${query.toString()}`);
   };
   return (
     <motion.div
