@@ -28,19 +28,22 @@ export default function AccountDorpdown() {
           <EllipsisVertical />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-64 bg-white rtl:mt-2" align={locales === "ar" ? "end" : "start"}>
+
+      {/* Content */}
+      <DropdownMenuContent className="w-64 bg-white rtl:mt-2 p-2" align={locales === "ar" ? "end" : "start"}>
         <DropdownMenuGroup>
           {/* Profile */}
-          <DropdownMenuItem className="text-3.5 text-black font-GeistMono tracking-none leading-full h-12 p-4 ">
-            <UserRound size={18} className="text-custom-gray-800  " />
+          <DropdownMenuItem className="text-3.5 text-black font-GeistMono tracking-none leading-full h-12 p-4">
+            <UserRound size={18} className="text-custom-gray-800 " />
             {t("profile")}
           </DropdownMenuItem>
         </DropdownMenuGroup>
 
+        {/* Separator */}
         <DropdownMenuSeparator />
 
         {/* Logout */}
-        <DropdownMenuItem className="p-4">
+        <DropdownMenuItem>
           <Logout />
         </DropdownMenuItem>
       </DropdownMenuContent>

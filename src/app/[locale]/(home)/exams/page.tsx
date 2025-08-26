@@ -1,18 +1,27 @@
 import { Link } from "@/i18n/navigation";
-import { Locales } from "@/i18n/routing";
 import { BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
+import { Suspense } from "react";
+import ExamsContent from "./_components/exams-content";
 import { useLocale, useTranslations } from "next-intl";
 
-export default function Page() {
+declare type ExamsSearchParams = {
+  subject?: string;
+};
+
+declare type ExamsPageProps = {
+  searchParams: ExamsSearchParams;
+};
+export default function Page({ searchParams }: ExamsPageProps) {
+  // Translation
   const t = useTranslations();
-  const locale = useLocale() as Locales;
+  const locale = useLocale();
 
   return (
     <main>
       <section>
-        <div className="p-6">
+        <div className="p-6 space-y-4">
           {/* Header */}
-          <div className="flex rtl:flex-row-reverse gap-2.5 items-center">
+          <div className="flex mt-4 rtl:flex-row-reverse gap-2.5 items-center">
             {locale === "en" ? (
               <Link href={"/"}>
                 {" "}
@@ -32,6 +41,11 @@ export default function Page() {
               })}
             </h1>
           </div>
+
+          {/* Exams content */}
+          <Suspense fallback={<p className="text-3x flex justify-center items-center h-screen">Loading....</p>}>
+            <ExamsContent searchParams={searchParams} />
+          </Suspense>
         </div>
       </section>
     </main>
