@@ -54,21 +54,24 @@ export default function SideNav() {
         {/* Links */}
         <div className="flex flex-col space-y-2 h-full justify-between">
           {/* Links map */}
-          {links.map((link) => (
-            <Link
-              className={cn(
-                `${
-                  pathname === link.path
+          {links.map((link) => {
+            const isActive = pathname === link.path || pathname.startsWith(`${link.path}exams`);
+
+            return (
+              <Link
+                key={link.path}
+                href={link.path}
+                className={cn(
+                  isActive
                     ? "bg-custom-blue-100 border border-custom-blue-500 text-custom-blue-500"
-                    : "text-custom-gray-500"
-                } text-base leading-full tracking-none font-GeistMono p-4 hover:bg-inherit hover:text-custom-blue-500 transition-colors duration-300`
-              )}
-              key={link.path}
-              href={link.path}
-            >
-              {t(link.name)}
-            </Link>
-          ))}
+                    : "text-custom-gray-500",
+                  "text-base leading-full tracking-none font-GeistMono p-4 hover:bg-inherit hover:text-custom-blue-500 transition-colors duration-300"
+                )}
+              >
+                {t(link.name)}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Profile (Avatar + Dropdown) */}
@@ -82,7 +85,7 @@ export default function SideNav() {
           </Avatar>
 
           {/* Profile Info + Dropdown */}
-          <div className=" flex justify-between items-center">
+          <div className="flex justify-between items-center">
             {/* user first Name and Email */}
             <div className="space-y-1">
               {/* user First name */}
@@ -91,7 +94,7 @@ export default function SideNav() {
               </h3>
 
               {/* User email */}
-              <h4 className="text-custom-gray-500 font-GeistMono text-[14px] leading-full tracking-none font-normal whitespace-normal break-all">
+              <h4 className="text-custom-gray-500 font-GeistMono text-3.5 leading-full tracking-none font-normal whitespace-normal break-all">
                 {status === "loading" ? <Spinner /> : data?.email}
               </h4>
             </div>

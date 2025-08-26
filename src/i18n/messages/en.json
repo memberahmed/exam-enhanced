@@ -70,5 +70,11 @@
   "the-end": "the end",
   "scroll-to-view-more": "Scroll to view more <span></span>",
   "page-not-found": "Page Not Found",
-  "go-home": "Go Home"
+  "go-home": "Go Home",
+  "something-went-wrong-please": "Something went wrong please try again later",
+  "sorry-no-exams": "Sorry no exams for this diploma yet may be you can try another diploma",
+  "end-of-list": "End of list",
+  "exam-numberofquestions": "<span></span> Questions",
+  "duration": "Duration",
+  "minutes": "minutes"
 }

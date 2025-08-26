@@ -70,5 +70,11 @@
   "the-end": "النهاية",
   "scroll-to-view-more": "قم بالتمرير لعرض المزيد <span> </span>",
   "page-not-found": "الصفحة لم يتم العثور عليها",
-  "go-home": "اذهب إلى المنزل"
+  "go-home": "اذهب إلى المنزل",
+  "something-went-wrong-please": "حدث خطأ ما الرجاء المحاولة مرة أخرى لاحقًا",
+  "sorry-no-exams": "نأسف لا توجد امتحانات لهذا الدبلومة حتى الآن يمكنك تجربة دبلومة اخري",
+  "end-of-list": "نهاية القائمة",
+  "exam-numberofquestions": "<span> </span> سؤال",
+  "duration": "المدة",
+  "minutes": "دقائق"
 }
