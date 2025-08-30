@@ -25,20 +25,28 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
       whileTap={{ scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
-        delay: index * 0.25,
+        delay: index * 0.2,
         duration: 0.3,
-        scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+        scale: { type: "spring", stiffness: 100, damping: 20 },
       }}
       onClick={() => handlClick(diploma._id)}
       className="relative cursor-pointer"
     >
       {/* Image */}
-      <div className="relative h-[448px] w-[250px] sm:w-full">
-        <Image src={diploma.icon} alt={diploma.name} sizes="100%" className="object-cover w-full h-full" fill />
+      <div className="relative h-[448px] w-full">
+        <Image
+          src={diploma.icon}
+          alt={diploma.name}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority={index === 0}
+          className="object-contain"
+          fill
+        />
       </div>
+
       <p
-        className="absolute bottom-2.5 left-1/2  -translate-x-1/2 
-               w-[calc(100%-20px)]  h-[70px] 
+        className="absolute bottom-2.5 left-1/2 -translate-x-1/2 
+               w-[calc(100%-20px)] h-[70px] 
                flex items-center justify-start
                bg-[#155DFC]/50 backdrop-blur-[6px] 
                text-white font-GeistMono font-semibold text-xl
