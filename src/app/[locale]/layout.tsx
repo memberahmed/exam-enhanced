@@ -33,7 +33,7 @@ export default async function LocaleLayout({
   const seseeion = await getServerSession(authOption);
 
   return (
-    <html className={`${inter.variable} ${GeistMono.variable} `} lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html className={`${GeistMono.variable} ${inter.variable}`} lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body>
         <Providers>
           <div className="flex flex-col md:flex-row ">
@@ -46,8 +46,8 @@ export default async function LocaleLayout({
             )}
 
             {/* Children */}
-            <ScrollArea className={`h-screen ${!seseeion?._id ? "w-full" : "md:w-8/12 lg:w-9/12 w-full "}`}>
-              <div className="">{children}</div>
+            <ScrollArea className={`xl:h-screen ${!seseeion?._id ? "w-full" : "md:w-8/12 lg:w-9/12 w-full "}`}>
+              <div>{children}</div>
             </ScrollArea>
           </div>
         </Providers>

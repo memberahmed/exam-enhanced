@@ -1,8 +1,8 @@
-import { Link } from "@/i18n/navigation";
-import { BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { Suspense } from "react";
 import ExamsContent from "./_components/exams-content";
 import { useLocale, useTranslations } from "next-intl";
+import GoBack from "@/components/custom/questions/go-back";
 
 declare type ExamsSearchParams = {
   subject?: string;
@@ -22,22 +22,18 @@ export default function Page({ searchParams }: ExamsPageProps) {
         <div className="p-6 space-y-4">
           {/* Header */}
           <div className="flex mt-4 rtl:flex-row-reverse gap-2.5 items-center">
-            {locale === "en" ? (
-              <Link href={"/"}>
-                {" "}
-                <ChevronLeft size={45} className="block h-20 border text-custom-blue-600 border-custom-blue-600" />
-              </Link>
-            ) : (
-              <Link href={"/"}>
-                <ChevronRight size={45} className="block h-20 border text-custom-blue-600 border-custom-blue-600" />
-              </Link>
-            )}
+            {/* Move back route icon */}
+            <GoBack />
+
+            {/* Title */}
             <h1
               dir={locale === "ar" ? "rtl" : "ltr"}
-              className="p-4 flex-1 flex items-center h-20 gap-x-4 font-GeistMono font font-semibold text-3xl tracking-none leading-full  bg-custom-blue-600 text-white"
+              className="p-4 flex-1 flex items-center h-10 md:h-20 gap-x-4 font-GeistMono font font-semibold text-2xl md:text-3xl tracking-none leading-full  bg-custom-blue-600 text-white"
             >
               {t.rich("exams-and-icon", {
-                span: () => <BookOpen size={45} />,
+                span: () => (
+                  <BookOpen className="text-2xl md:text-4xl lg:text-6xl w-6 h-6 md:w-10 md:h-10 lg:w-14 lg:h-14" />
+                ),
               })}
             </h1>
           </div>

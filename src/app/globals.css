@@ -9,6 +9,7 @@ body {
 
 @layer base {
   :root {
+    --font-sans: var(--font-geist-mono);
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -36,6 +37,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
+    --font-sans: var(--font-geist-mono);
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -62,7 +64,9 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
-
+body {
+  font-family: var(--font-sans);
+}
 @layer base {
   * {
     @apply border-border;
