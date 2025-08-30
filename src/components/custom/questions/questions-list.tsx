@@ -119,7 +119,7 @@ export default function QuestionsList({ questions }: QuestionProps) {
       onSuccess: () => {
         form.reset();
         setSubmitted(true);
-        localStorage.setItem("question", JSON.stringify(questions));
+        localStorage.setItem("questions", JSON.stringify(questions));
       },
       onError: (error) => {
         console.error("Submit error:", error);
@@ -355,9 +355,9 @@ export default function QuestionsList({ questions }: QuestionProps) {
             </form>
           </Form>
         </>
-      ) : (
-        !validationError && <CheckQuestions setStep={setStep} setSubmitted={setSubmitted} />
-      )}
+      ) : !validationError && submitted ? (
+        <CheckQuestions setStep={setStep} setSubmitted={setSubmitted} />
+      ) : null}
     </div>
   );
 }

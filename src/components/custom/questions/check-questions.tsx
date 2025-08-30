@@ -32,7 +32,7 @@ export default function CheckQuestions({ setSubmitted, setStep }: CheckQuestions
 
   useEffect(() => {
     //  Get stored questions from local storage becouse bacouse the back don't send the data in a good way
-    const storedQuestoins = localStorage.getItem("question");
+    const storedQuestoins = localStorage.getItem("questions");
     if (storedQuestoins) {
       setQuestions(JSON.parse(storedQuestoins));
     }
@@ -45,21 +45,21 @@ export default function CheckQuestions({ setSubmitted, setStep }: CheckQuestions
   const data = checkQuestionsResponse;
 
   return (
-    <>
+    <div className="space-y-6">
       {/* Header */}
       <div>
         {/* Title */}
         <h1 className="text-custom-blue-600 text-2xl font-semibold tracking-none leading-full pt-6">{t("results")}</h1>
       </div>
 
-      <div className="flex items-center flex-col md:flex-row md:gap-14">
+      <div className="flex items-center space-y-4 flex-col md:flex-row md:gap-14">
         {/* Result */}
         <div className="flex items-center flex-col justify-center sapce-space-y-6">
           <CircularProgressColorDemo value={data?.total} />
 
           {/* Number of correct and wrong answers */}
-          <div>
-            <p className="flex text-sm font-GeistMono text-black tracking-none leading-full h-5 items-center gap-2.5">
+          <div className="space-y-4">
+            <p className="flex text-sm font-GeistMono text-black tracking-none leading-full h-5 items-center  gap-2.5">
               {/* Colored indicator box */}
               <span className="block h-4 w-4 bg-emerald-500"></span>
 
@@ -87,7 +87,7 @@ export default function CheckQuestions({ setSubmitted, setStep }: CheckQuestions
           className="h-[calc(100vh-350px)] flex-1
         "
         >
-          <div className="space-y-2.5">
+          <div className="md:space-y-2.5 space-y-6">
             {data?.WrongQuestions.map((wrongQuestion) => {
               const question = questions.find((q) => q._id === wrongQuestion.QID);
 
@@ -171,6 +171,6 @@ export default function CheckQuestions({ setSubmitted, setStep }: CheckQuestions
           {t("explore")}{" "}
         </Button>
       </div>
-    </>
+    </div>
   );
 }
