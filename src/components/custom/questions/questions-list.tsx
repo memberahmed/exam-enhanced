@@ -172,9 +172,9 @@ export default function QuestionsList({ questions }: QuestionProps) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4  p-2 sm:p-4 md:p-6">
       {/* Exam title and progress */}
-      <div className="space-y-1.5 flex flex-col">
+      <div className="space-y-2.5 flex flex-col">
         <div className="flex justify-between font-normal h-5 text-sm text-custom-gray-500 font-GeistMono">
           {/* Exam subject and title */}
           <h1>
@@ -237,7 +237,7 @@ export default function QuestionsList({ questions }: QuestionProps) {
                 control={form.control}
                 name={`answers.${step}.correct`}
                 render={({ field }) => (
-                  <FormItem className="space-y-4 flex-1 my-auto overflow-y-auto">
+                  <FormItem className={cn("space-y-4 w-full p-1 sm:p-6", dir === "rtl" ? "text-right" : "text-left")}>
                     {/* Question text */}
                     <FormLabel
                       dir={dir}
