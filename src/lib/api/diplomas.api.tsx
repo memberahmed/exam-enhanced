@@ -3,8 +3,9 @@ import { HEADER_CONTENT_TYPE } from "../types/constant";
 import DiplomaCard from "@/app/[locale]/(home)/_components/diplomas-card";
 
 export async function getDiplomas(page: number) {
+  const baseUrl = process.env.API;
+
   try {
-    const baseUrl = process.env.API;
     const token = await getUserToken();
 
     const res = await fetch(`${baseUrl}/subjects?limit=6&page=${page}`, {
