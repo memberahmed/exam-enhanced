@@ -33,8 +33,8 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
       className="relative cursor-pointer"
     >
       {/* Image */}
-      <div className="relative h-[448px] w-[250px] sm:w-full">
-        <Image src={diploma.icon} alt={diploma.name} sizes="100%" className="object-cover w-full h-full" fill />
+      <div className="relative h-[448px] w-full">
+        <Image src={diploma.icon} alt={diploma.name} sizes="100%" className="object-contain" fill />
       </div>
       <p
         className="absolute bottom-2.5 left-1/2  -translate-x-1/2 
@@ -47,6 +47,7 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
       >
         {diploma.name}
       </p>
+      
     </motion.div>
   );
 }
