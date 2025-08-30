@@ -22,7 +22,7 @@ export default async function Page({ params: { id } }: { params: { id: string } 
   return (
     <main>
       <section>
-        <div dir={locale === "ar" ? "rtl" : "ltr"} className="p-6">
+        <div dir={locale === "ar" ? "rtl" : "ltr"} className="p-2 sm:p-4 md:p-6">
           {/* Header */}
           <div className="flex mt-4  gap-2.5 items-center">
             {/*Move back route icon */}
@@ -43,7 +43,7 @@ export default async function Page({ params: { id } }: { params: { id: string } 
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="">
             {/* Error Massage */}
             {feedbackMessage ? <FeedbackError error={feedbackMessage} /> : null}
 
