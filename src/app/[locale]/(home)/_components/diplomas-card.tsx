@@ -36,10 +36,9 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
       <div className="relative h-[448px] w-full">
         <Image src={diploma.icon} alt={diploma.name} sizes="100%" className="object-contain" fill />
       </div>
-
       <p
-        className="absolute bottom-2.5 left-1/2 -translate-x-1/2 
-               w-[calc(100%-20px)] h-[70px] 
+        className="absolute bottom-2.5 left-1/2  -translate-x-1/2 
+               w-[calc(100%-20px)]  h-[70px] 
                flex items-center justify-start
                bg-[#155DFC]/50 backdrop-blur-[6px] 
                text-white font-GeistMono font-semibold text-xl
@@ -48,6 +47,7 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
       >
         {diploma.name}
       </p>
+      
     </motion.div>
   );
 }

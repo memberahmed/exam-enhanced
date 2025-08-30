@@ -20,9 +20,8 @@ const config: Config = {
         3.5: "14px",
       },
       fontFamily: {
+        sans: ["var(--font-geist-mono)", "sans-serif"],
         inter: ["var(--font-inter)", "sans-serif"],
-        mono: ["var(--font-geist-mono)"],
-        GeistMono: ["var(--font-geist-mono)"],
       },
       letterSpacing: {
         none: "0px",
@@ -31,6 +30,20 @@ const config: Config = {
         full: "100%",
       },
       colors: {
+        emerald: {
+          50: "#ecfdf5",
+          100: "#d0fae5",
+          200: "#a4f4cf",
+          300: "#5ee9b5",
+          400: "#00d492",
+          500: "#00bc7d",
+          600: "#009966",
+          700: "#007a55",
+          800: "#006045",
+          900: "#004f3b",
+          950: "#002c22",
+        },
+
         "custom-blue": {
           50: "#eff6ff",
           100: "#dbeafe",

@@ -29,12 +29,12 @@ export default function ExamCard({ exam }: ExamsProps) {
     <div
       dir={dir}
       onClick={() => handlClick(exam._id)}
-      className="cursor-pointer flex justify-between items-center h-20 bg-custom-blue-50 p-4"
+      className="cursor-pointer flex justify-between items-center h-16 md:h-20 bg-custom-blue-50 md:p-4"
     >
       {/* Title no. of question */}
       <div className="space-y-1 tracking-none leading-full">
         {/* Title */}
-        <h2 className="font-semibold text-custom-blue-600 text-2xl tracking-none leading-full font-GeistMono ">
+        <h2 className="font-semibold text-custom-blue-600 text-base md:text-2xl tracking-none leading-full font-GeistMono ">
           {exam.title}
         </h2>
 
@@ -47,11 +47,13 @@ export default function ExamCard({ exam }: ExamsProps) {
       </div>
 
       {/* Duration  */}
-
       <div className="flex gap-x-1.5 font-GeistMono">
+        {/* icon */}
         <span>
           <Timer className="text-custom-gray-400" />
         </span>
+
+        {/* Text */}
         <p className="p-1  text-sm text-custom-gray-800 ">
           <span className="font-medium tracking-none leading-full ">{t("duration")}</span>:
           <span className="tracking-none leading-full font-normal">

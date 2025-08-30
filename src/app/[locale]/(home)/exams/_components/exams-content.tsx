@@ -18,6 +18,7 @@ export default async function ExamsContent({ searchParams: { subject } }: ExamsC
   // Functions
   const exams = await getExams(subject);
 
+  // Error feed back
   if ("code" in exams) {
     return <FeedbackError error={exams?.message || t("something-went-wrong-please")} />;
   }
@@ -26,9 +27,11 @@ export default async function ExamsContent({ searchParams: { subject } }: ExamsC
     <>
       <div className="flex flex-col space-y-4 ">
         {exams?.exams.length === 0 ? (
+          // No exams case
           <p className="text-custom-gray-800 font-GeistMono font-medium p-4 text-center">{t("sorry-no-exams")}</p>
         ) : (
           <>
+            {/* Exams */}
             {exams?.exams?.map((exam) => (
               <ExamCard exam={exam} key={exam._id} />
             ))}

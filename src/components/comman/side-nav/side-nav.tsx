@@ -35,14 +35,23 @@ export default function SideNav() {
   // States
   const [toggleNav, setToggleNav] = useState(false);
   return (
-    <nav className="bg-custom-blue-50 space-y-5 md:min-h-screen flex flex-col border-r p-5 md:p-10">
+    <nav className="bg-custom-blue-50 space-y-6 md:min-h-screen flex flex-col border-r p-5 md:p-10">
       {/* Toggle language  */}
       <ToggleLang />
 
       {/* Logo image */}
       <div className="flex justify-between md:mb-14 mb-6 items-center ">
-        <div className="relative w-48 h-9 ">
-          <Image sizes="100%" fill className="h-full w-full object-cover" src="/assets/images/logo.png" alt="" />
+        <div className="flex justify-start">
+          <Link className="relative  w-36 md:w-48 h-10" href={"/"}>
+            <Image
+              priority
+              sizes="100%"
+              fill
+              className="h-full w-full object-contain"
+              src="/assets/images/logo.png"
+              alt=""
+            />
+          </Link>
         </div>
 
         {/* Phone toggle icon */}
