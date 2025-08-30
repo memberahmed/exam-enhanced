@@ -11,6 +11,6 @@ export default async function getUserToken() {
     return token?.accessToken;
   } catch (error) {
     console.error("Error getting token:", error);
-    return null;
+    return undefined;
   }
 }

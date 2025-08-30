@@ -30,16 +30,16 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
         scale: { type: "spring", stiffness: 100, damping: 20 },
       }}
       onClick={() => handlClick(diploma._id)}
-      className="relative cursor-pointer"
+      className="relative cursor-pointer w-full"
     >
       {/* Image */}
-      <div className="relative h-[448px] w-full">
+      <div className="relative aspect-[3/4]  w-full">
         <Image
+          priority={index < 3}
           src={diploma.icon}
           alt={diploma.name}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          priority={index === 0}
-          className="object-contain"
+          sizes="100%"
+          className="object-cover h-full w-full"
           fill
         />
       </div>
