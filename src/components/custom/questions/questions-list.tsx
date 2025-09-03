@@ -174,8 +174,8 @@ export default function QuestionsList({ questions }: QuestionProps) {
   return (
     <div className="space-y-4  p-2 sm:p-4 md:p-6">
       {/* Exam title and progress */}
-      <div className="space-y-2.5 flex flex-col">
-        <div className="flex justify-between font-normal h-5 text-sm text-custom-gray-500 font-GeistMono">
+      <div dir={dir} className="space-y-2.5 flex flex-col">
+        <div className="flex justify-between font-normal h-5 text-sm text-custom-gray-500 ">
           {/* Exam subject and title */}
           <h1>
             {questions?.[0]?.subject?.name} - {questions?.[0]?.exam?.title}
@@ -232,17 +232,23 @@ export default function QuestionsList({ questions }: QuestionProps) {
         <>
           {/* Form */}
           <Form {...form}>
-            <form dir={dir} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-col flex min-h-[450px] ">
+            <form
+              dir={dir}
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-6 flex-col flex  md:min-h-[470px]"
+            >
               <FormField
                 control={form.control}
                 name={`answers.${step}.correct`}
                 render={({ field }) => (
-                  <FormItem className={cn("space-y-4 w-full p-1 sm:p-6", dir === "rtl" ? "text-right" : "text-left")}>
+                  <FormItem
+                    className={cn("space-y-4 flex-1 w-full p-1 sm:p-6", dir === "rtl" ? "text-right" : "text-left")}
+                  >
                     {/* Question text */}
                     <FormLabel
                       dir={dir}
                       className={cn(
-                        "pt-6 font-semibold font-GeistMono md:text-2xl text-base text-custom-blue-600",
+                        "pt-6 font-semibold  md:text-2xl text-base text-custom-blue-600",
                         dir === "rtl" ? "text-right" : "text-left"
                       )}
                     >
@@ -264,7 +270,7 @@ export default function QuestionsList({ questions }: QuestionProps) {
                           form.clearErrors(`answers.${step}.correct`);
                         }}
                         value={currentAnswer}
-                        className="flex flex-col flex-1"
+                        className="flex flex-col "
                       >
                         {currentQuestion?.answers.map((answer) => (
                           <FormItem
@@ -279,7 +285,12 @@ export default function QuestionsList({ questions }: QuestionProps) {
                               {/* Radio input */}
                               <RadioGroupItem
                                 value={answer.key}
-                                className="text-custom-blue-600 border-custom-blue-600 [&_svg]:w-2.5 [&_svg]:fill-custom-blue-600"
+                                className={cn(
+                                  "text-custom-blue-600 [&_svg]:w-2.5 [&_svg]:fill-custom-blue-600",
+                                  form.formState.errors.answers?.[step]?.correct
+                                    ? "border-custom-red-600"
+                                    : "border-custom-blue-600"
+                                )}
                               />
                             </FormControl>
 
@@ -299,10 +310,10 @@ export default function QuestionsList({ questions }: QuestionProps) {
               />
               {error && <FeedbackError error={error.message} />}
               {/* Footer with navigation and timer */}
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 my-auto">
                 {/* Previous button */}
                 <Button
-                  className="h-12 hover:bg-custom-gray-300 font-medium text-sm tracking-none font-GeistMono w-6/12 bg-custom-gray-200 text-custom-gray-400"
+                  className="h-12 hover:bg-custom-gray-300 font-medium text-sm tracking-none  w-6/12 bg-custom-gray-200 text-custom-gray-400"
                   type="button"
                   disabled={isPending}
                   onClick={() => {
@@ -332,7 +343,7 @@ export default function QuestionsList({ questions }: QuestionProps) {
                 {/* Next or Submit button */}
                 <Button
                   disabled={isPending || form.formState.isSubmitting}
-                  className="h-12 font-medium text-sm tracking-none font-GeistMono w-6/12"
+                  className="h-12 font-medium text-sm tracking-none  w-6/12"
                   type="button" // Always button, never submit directly
                   onClick={() => {
                     // If it's the last question, submit manually

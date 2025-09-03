@@ -11,3 +11,7 @@ declare type Exam = {
 declare type ExamsResponse = {
   exams: Exam[];
 };
+
+declare type SingleExamResponse = {
+  exam: Exam;
+};
