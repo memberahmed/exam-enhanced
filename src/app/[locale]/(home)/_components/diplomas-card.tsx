@@ -14,6 +14,7 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = new URLSearchParams(searchParams.toString());
+
   const handlClick = (id: string) => {
     query.set("subject", id);
     router.push(`exams?${query}`);
