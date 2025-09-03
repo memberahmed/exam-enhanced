@@ -67,6 +67,7 @@
   "diplomas-and-icon": "<span></span> Diplomas",
   "logging-out": "Logging out",
   "exams-and-icon": "<span></span> Exams",
+  "single-exam-and-icon": "<span></span>Exam {value}",
   "the-end": "the end",
   "scroll-to-view-more": "Scroll to view more <span></span>",
   "page-not-found": "Page Not Found",
@@ -95,5 +96,7 @@
   "correct-answer": "Correct: {count}",
   "wrong-count": "Wrong: {count}",
   "restart": "Restart",
-  "explore": "Explore"
+  "explore": "Explore",
+  "exams": "Exams",
+  "home": "Home"
 }

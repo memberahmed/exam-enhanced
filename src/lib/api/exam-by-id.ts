@@ -1,19 +1,21 @@
+"use server";
+
 import getUserToken from "@/hooks/get-token";
 import { HEADER_CONTENT_TYPE } from "../types/constant";
 
-export async function getExams(id: string) {
+export async function getExamById(id: string) {
   try {
     const token = await getUserToken();
     const baseUrl = process.env.API;
 
-    const res = await fetch(`${baseUrl}/exams${id ? "?subject=670038f7728c92b7fdf43501" : ""}`, {
+    const res = await fetch(`${baseUrl}/exams/${id}`, {
       headers: {
         ...HEADER_CONTENT_TYPE,
         token: token || "",
       },
     });
 
-    const payload: ApiResponse<PaginatedResponse<ExamsResponse>> = await res.json();
+    const payload: ApiResponse<{ message: "success"; exam: Exam }> = await res.json();
 
     if ("code" in payload) {
       return {
