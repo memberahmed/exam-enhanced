@@ -13,12 +13,12 @@ export default function DiplomaCard({ diploma, index }: DiplomaCardProps) {
   //   Navigation
   const router = useRouter();
   const searchParams = useSearchParams();
-  const query = new URLSearchParams(searchParams);
-
+  const query = new URLSearchParams(searchParams.toString());
   const handlClick = (id: string) => {
     query.set("subject", id);
-    router.push(`/exams?${query.toString()}`);
+    router.push(`exams?${query}`);
   };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

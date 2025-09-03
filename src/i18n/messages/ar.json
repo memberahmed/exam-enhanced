@@ -67,6 +67,7 @@
   "diplomas-and-icon": "<span></span> الدبلومات",
   "logging-out": "تسجيل الخروج",
   "exams-and-icon": "<span></span> الامتحانات",
+  "single-exam-and-icon": "<span></span> إمتحان {value}",
   "the-end": "النهاية",
   "scroll-to-view-more": "قم بالتمرير لعرض المزيد <span> </span>",
   "page-not-found": "الصفحة لم يتم العثور عليها",
@@ -95,5 +96,7 @@
   "correct-answer": "الاجابات الصحيحة: {count}",
   "wrong-count": "الأجابات الخاطئة: {count}",
   "restart": "إعادة الأمتحان",
-  "explore": "اكتشف المزيد"
+  "explore": "اكتشف المزيد",
+  "exams": "الامتحانات",
+  "home": "الصفحة الرئيسة"
 }
