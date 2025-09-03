@@ -13,9 +13,9 @@ export default async function ExamsContent({ searchParams }: ExamsContentProps) 
   const t = await getTranslations();
 
   // Functions
-
   const query = buildSearchParams(searchParams);
 
+  // payload
   const exams = await getExams(query);
 
   // Error feed back

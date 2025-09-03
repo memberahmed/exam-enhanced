@@ -1,12 +1,14 @@
 import getUserToken from "@/hooks/get-token";
 import { HEADER_CONTENT_TYPE } from "../types/constant";
 
-export async function getExams(id: string) {
+export async function getExams(query: string | undefined) {
   try {
     const token = await getUserToken();
     const baseUrl = process.env.API;
 
-    const res = await fetch(`${baseUrl}/exams${id ? `?subject=${id}` : ""}`, {
+    
+   const res = await fetch(`${baseUrl}/exams${query ? `?${query}` : ""}`, {
+
       headers: {
         ...HEADER_CONTENT_TYPE,
         token: token || "",
