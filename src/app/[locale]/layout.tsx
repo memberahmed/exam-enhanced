@@ -50,7 +50,7 @@ export default async function LocaleLayout({
             {/* Main Content */}
             <ScrollArea className={`xl:h-screen ${!session?._id ? "w-full" : "md:w-8/12 lg:w-9/12 w-full "}`}>
               {/* Breadcrumb */}
-              <Nvabreadcrumb />
+              {!session?._id && <Nvabreadcrumb />}
               <div>{children}</div>
             </ScrollArea>
           </div>
