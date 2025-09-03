@@ -6,25 +6,33 @@ import { getQuestions } from "@/lib/api/qusetion.api";
 import { CircleQuestionMark } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 
-export default async function Page({ params: { id } }: { params: { id: string } }) {
+type GetQuestionsParams = {
+  params: {
+    examId: string;
+  };
+};
+
+export default async function GetQuestions({ params }: GetQuestionsParams) {
   // Trnaslation
   const t = await getTranslations();
   const locale = (await getLocale()) as Locales;
+  const { examId } = params;
 
   // Fectching data
-  const payload = await getQuestions(id);
+  const payload = await getQuestions(examId);
 
   // Quesions
   const questions = "questions" in payload ? payload?.questions : null;
+
   // Error
   const feedbackMessage = "code" in payload ? payload?.message : null;
 
   return (
     <main>
       <section>
-        <div dir={locale === "ar" ? "rtl" : "ltr"} className="p-2 sm:p-4 md:p-6">
+        <div className="p-2 sm:p-4 md:p-6">
           {/* Header */}
-          <div className="flex mt-4  gap-2.5 items-center">
+          <div dir={locale === "ar" ? "rtl" : "ltr"} className="flex mt-4 gap-2.5 items-center">
             {/*Move back route icon */}
             <GoBack />
 

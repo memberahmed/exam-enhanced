@@ -21,14 +21,30 @@ export default function ExamCard({ exam }: ExamsProps) {
 
   // Functions
 
-  const handlClick = (id: string) => {
-    router.push(`${pathname}/${id}`);
+  // functionto get last segment from a pathname
+
+  const getLastSegment = (path: string): string | undefined => {
+    const segments = path.split("/").filter(Boolean);
+    return segments.pop();
+  };
+
+  // Function to navigate the required page
+  const handleClick = (id: string) => {
+    const currentId = getLastSegment(pathname);
+
+    // If user clicked from the form get single exam
+    if (currentId === id) {
+      router.push(`${pathname}/questions`);
+    } else {
+      // Clicked form exams page
+      router.push(`/exams/${id}/questions`);
+    }
   };
 
   return (
     <div
       dir={dir}
-      onClick={() => handlClick(exam._id)}
+      onClick={() => handleClick(exam._id)}
       className="cursor-pointer flex justify-between items-center h-16 md:h-20 bg-custom-blue-50 md:p-4"
     >
       {/* Title no. of question */}

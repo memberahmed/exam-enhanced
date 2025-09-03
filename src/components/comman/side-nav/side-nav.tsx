@@ -74,7 +74,7 @@ export default function SideNav() {
                   isActive
                     ? "bg-custom-blue-100 border border-custom-blue-500 text-custom-blue-500"
                     : "text-custom-gray-500",
-                  "text-base leading-full tracking-none font-GeistMono p-4 hover:bg-inherit hover:text-custom-blue-500 transition-colors duration-300"
+                  "text-base leading-full tracking-none p-4 hover:bg-inherit hover:text-custom-blue-500 transition-colors duration-300"
                 )}
               >
                 {t(link.name)}
@@ -98,12 +98,12 @@ export default function SideNav() {
             {/* user first Name and Email */}
             <div className="space-y-1">
               {/* user First name */}
-              <h3 className="text-custom-blue-600 font-GeistMono text-base leading-full tracking-none font-medium">
+              <h3 className="text-custom-blue-600 text-base leading-full tracking-none font-medium">
                 {status === "loading" ? <Spinner /> : data?.firstName}
               </h3>
 
               {/* User email */}
-              <h4 className="text-custom-gray-500 font-GeistMono text-3.5 leading-full tracking-none font-normal whitespace-normal break-all">
+              <h4 className="text-custom-gray-500 text-3.5 leading-full tracking-none font-normal whitespace-normal break-all">
                 {status === "loading" ? <Spinner /> : data?.email}
               </h4>
             </div>
