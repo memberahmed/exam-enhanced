@@ -6,7 +6,7 @@ export async function getExams(id: string) {
     const token = await getUserToken();
     const baseUrl = process.env.API;
 
-    const res = await fetch(`${baseUrl}/exams${id ? "?subject=id" : ""}`, {
+    const res = await fetch(`${baseUrl}/exams${id ? `?subject=${id}` : ""}`, {
       headers: {
         ...HEADER_CONTENT_TYPE,
         token: token || "",
