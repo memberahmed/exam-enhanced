@@ -14,9 +14,9 @@ export default function Logout() {
   return (
     <div
       onClick={() => logout()}
-      className="text-3.5 p-2 w-full cursor-pointer flex items-center focus-visible:text-custom-red-600 text-custom-red-500 font-GeistMono tracking-none leading-full h-12 gap-x-2"
+      className="text-3.5 p-2 w-full cursor-pointer flex items-center focus-visible:text-custom-red-600 text-custom-red-500  tracking-none leading-full h-12 gap-x-2"
     >
-      <LogOut size={18} className=" text-custom-red-400" />
+      <LogOut size={18} className="text-custom-red-400" />
       {/* Logout span */}
       <span>{t("log-out")}</span>
     </div>

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useLocale, useTranslations } from "next-intl";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2Icon } from "lucide-react";
 import { useState } from "react";
 import FeedbackError from "@/components/comman/feedback-error";
 import useChangePassword from "../_hooks/use-change-password";
@@ -223,7 +223,11 @@ export default function ChangePasswordForm({ setStep, step, email }: ChangePassw
           className="w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
           type="submit"
         >
-          {isPending ? t("loading") : t("update-password")}
+          {isPending
+            ? t.rich("loading", {
+                span: () => <Loader2Icon className="animate-spin" />,
+              })
+            : t("update-password")}
         </Button>
       </form>
     </Form>

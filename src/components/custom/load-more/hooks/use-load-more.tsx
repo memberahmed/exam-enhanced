@@ -11,13 +11,13 @@ export default function useLoadMore() {
         throw new Error(payload.message);
       }
       return {
-        myData: payload.subjects.map((subject, index) => (
+        subjects: payload.subjects.map((subject, index) => (
           <DiplomaCard index={index} diploma={subject} key={subject._id} />
         )),
         metadata: payload.metadata,
       };
     },
-    initialPageParam: 2,
+    initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       if (lastPage.metadata.currentPage === lastPage.metadata.numberOfPages) return undefined;
 
@@ -25,7 +25,7 @@ export default function useLoadMore() {
     },
   });
 
-  const diplomas = data?.pages.flatMap((page) => page.myData) ?? [];
+  const diplomas = data?.pages.flatMap((page) => page.subjects) ?? [];
 
   return { diplomas, isPending, isLoading, error, hasNextPage, isFetchingNextPage, fetchNextPage };
 }
