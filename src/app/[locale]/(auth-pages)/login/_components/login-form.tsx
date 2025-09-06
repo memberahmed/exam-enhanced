@@ -8,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2Icon } from "lucide-react";
 import { useState } from "react";
 import FeedbackError from "@/components/comman/feedback-error";
 import useLogin from "../_hooks/use-login";
@@ -79,7 +79,7 @@ export function LoginForm() {
                 {/* Email label */}
                 <FormLabel
                   htmlFor="email"
-                  className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none "
+                  className="text-custom-gray-800 font-medium text-base leading-full tracking-none "
                 >
                   {t("email-label")}
                 </FormLabel>
@@ -108,7 +108,7 @@ export function LoginForm() {
                 {/* Password label */}
                 <FormLabel
                   htmlFor="password"
-                  className="font-GeistMono text-custom-gray-800 font-medium text-base leading-full tracking-none"
+                  className="text-custom-gray-800 font-medium text-base leading-full tracking-none"
                 >
                   {t("password-label")}
                 </FormLabel>
@@ -153,7 +153,7 @@ export function LoginForm() {
           {/* Forgot password Lable */}
           <Link
             href={"/forgot-password"}
-            className="text-custom-blue-600 font-GeistMono font-medium text-base leading-full tracking-none self-end"
+            className="text-custom-blue-600 font-medium text-base leading-full tracking-none self-end"
           >
             {t("forgot-your-password")}
           </Link>
@@ -162,10 +162,14 @@ export function LoginForm() {
           {/* Submit */}
           <Button
             disabled={(form.formState.isSubmitting && !form.formState.isValid) || isPending}
-            className="w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
+            className="w-full font-medium text-base tracking-none leading-full h-12"
             type="submit"
           >
-            {isPending ? t("loading") : t("login")}
+            {isPending
+              ? t.rich("loading", {
+                  span: () => <Loader2Icon className="animate-spin" />,
+                })
+              : t("login")}
           </Button>
           <HaveAccount />
         </form>

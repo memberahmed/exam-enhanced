@@ -19,7 +19,8 @@ type Link = {
 
 const links: Link[] = [
   { name: "diplomas", path: "/" },
-  { name: "account-settings", path: "/account-settings" },
+  { name: "all-exams", path: "/exams" },
+  { name: "account-settings", path: "/account" },
 ];
 
 export default function SideNav() {
@@ -64,7 +65,7 @@ export default function SideNav() {
         <div className="flex flex-col space-y-2 h-full justify-between">
           {/* Links map */}
           {links.map((link) => {
-            const isActive = pathname === link.path || pathname.startsWith(`${link.path}exams`);
+            const isActive = pathname === link.path;
 
             return (
               <Link

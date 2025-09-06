@@ -40,7 +40,7 @@ export const authOption: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    jwt: ({ token, user }) => {
+    jwt: ({ token, user, trigger, session }) => {
       if (user) {
         token.accessToken = user.accessToken;
         token._id = user._id;
@@ -53,6 +53,13 @@ export const authOption: NextAuthOptions = {
         token.isVerified = user.isVerified;
         token.createdAt = user.createdAt;
       }
+      if (trigger === "update" && session) {
+        if (session.firstName) token.firstName = session.firstName;
+        if (session.lastName) token.lastName = session.lastName;
+        if (session.email) token.email = session.email;
+        if (session.phone) token.phone = session.phone;
+      }
+
       return token;
     },
     session: ({ session, token }) => {

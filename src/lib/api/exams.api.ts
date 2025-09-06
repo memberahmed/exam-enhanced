@@ -6,13 +6,12 @@ export async function getExams(query: string | undefined) {
     const token = await getUserToken();
     const baseUrl = process.env.API;
 
-    
-   const res = await fetch(`${baseUrl}/exams${query ? `?${query}` : ""}`, {
-
+    const res = await fetch(`${baseUrl}/exams${query ? `?${query}` : ""}`, {
       headers: {
         ...HEADER_CONTENT_TYPE,
         token: token || "",
       },
+      next: { revalidate: 60 * 60 * 24 },
     });
 
     const payload: ApiResponse<PaginatedResponse<ExamsResponse>> = await res.json();

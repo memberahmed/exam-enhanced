@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import GoBack from "@/components/custom/questions/go-back";
 import ExamsContent from "./_components/exams-content";
 import { Locales } from "@/i18n/routing";
+import { ExamCardSkeleton } from "@/components/sekeltons/exam-skeleton";
 
 type ParamsProps = {
   params: {
@@ -26,7 +27,7 @@ export default function Page({ params: { locale }, searchParams }: ParamsProps) 
             <GoBack />
 
             {/* Title */}
-            <h1 className="p-4 flex-1 flex items-center h-10 md:h-20 gap-x-4 font-GeistMono font font-semibold text-2xl md:text-3xl tracking-none leading-full  bg-custom-blue-600 text-white">
+            <h1 className="p-4 flex-1 flex items-center h-10 md:h-20 gap-x-4 font-inter font font-semibold text-2xl md:text-3xl tracking-none leading-full  bg-custom-blue-600 text-white">
               {t.rich("exams-and-icon", {
                 span: () => (
                   <BookOpen className="text-2xl md:text-4xl lg:text-6xl w-6 h-6 md:w-10 md:h-10 lg:w-14 lg:h-14" />
@@ -36,7 +37,15 @@ export default function Page({ params: { locale }, searchParams }: ParamsProps) 
           </div>
 
           {/* Exams content */}
-          <Suspense fallback={<p className="text-3x flex justify-center items-center h-screen">Loading....</p>}>
+          <Suspense
+            fallback={
+              <div className="space-y-4 ">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <ExamCardSkeleton key={i} />
+                ))}
+              </div>
+            }
+          >
             <ExamsContent searchParams={searchParams} />
           </Suspense>
         </div>

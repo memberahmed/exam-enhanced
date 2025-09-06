@@ -13,6 +13,7 @@ import Arrow from "@/components/comman/arrow";
 import useSendOTP from "../_hooks/use-send-otp";
 import ToggleLang from "@/components/comman/toggle-lang";
 import { Locales } from "@/i18n/routing";
+import { Loader2Icon } from "lucide-react";
 
 type SendOTPProps = {
   setStep: SetForgotPasswordForm;
@@ -104,7 +105,11 @@ export default function SendOTP({ setEmail, setStep }: SendOTPProps) {
             className="w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
             type="submit"
           >
-            {isPending ? t("loading") : t("continue")}
+            {isPending
+              ? t.rich("loading", {
+                  span: () => <Loader2Icon className="animate-spin" />,
+                })
+              : t("continue")}
             <Arrow />
           </Button>
           <div className="pt-9">

@@ -7,6 +7,7 @@ import FeedbackError from "@/components/comman/feedback-error";
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { ChevronDown } from "lucide-react";
+import DiplomaCardSkeleton from "@/components/sekeltons/diploma-card-sekelton";
 
 export default function LoadMore() {
   //  Translation
@@ -31,7 +32,13 @@ export default function LoadMore() {
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 xl:grid-cols-3">{diplomas}</div>
       {/* First fectching loading */}
-      {isLoading && <p className="text-center p-4 ">Calling Diplomas</p>}
+      {isLoading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 xl:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <DiplomaCardSkeleton key={index} />
+          ))}
+        </div>
+      )}
 
       {/* Error */}
       {error && <FeedbackError error={error.message || "Something went wrong Please try agian later"} />}
@@ -47,15 +54,11 @@ export default function LoadMore() {
 
       {/* Bottom  */}
       <p className="text-center p-2.5 flex-col flex items-center justify-center space-y-2 font-GeistMono text-base tracking-none leading-full text-custom-gray-600">
-        {!hasNextPage ? (
-          t("the-end")
-        ) : (
-          <>
-            {t.rich("scroll-to-view-more", {
+        {hasNextPage
+          ? t.rich("scroll-to-view-more", {
               span: () => <ChevronDown />,
-            })}
-          </>
-        )}{" "}
+            })
+          : t("the-end")}{" "}
       </p>
     </div>
   );

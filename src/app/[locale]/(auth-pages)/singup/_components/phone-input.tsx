@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { useDirection } from "@/lib/utils/get-dirrction.util";
 
 type PhoneInputProps = Omit<React.ComponentProps<"input">, "onChange" | "value" | "ref"> &
   Omit<RPNInput.Props<typeof RPNInput.default>, "onChange"> & {
@@ -21,20 +22,18 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwa
   React.ElementRef<typeof RPNInput.default>,
   PhoneInputProps
 >(({ className, onChange, value, ...props }, ref) => {
+  const dir = useDirection();
+
   return (
     <RPNInput.default
       ref={ref}
+      dir={dir}
       className={cn("flex", className)}
       flagComponent={FlagComponent}
       countrySelectComponent={CountrySelect}
       inputComponent={InputComponent}
       smartCaret={false}
       value={value || undefined}
-      /**
-       * Handles the onChange event.
-       * react-phone-number-input might trigger the onChange event as undefined
-       * when a valid phone number is not entered.
-       */
       onChange={(val) => onChange?.((val ?? "") as RPNInput.Value)}
       {...props}
     />
@@ -43,7 +42,10 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwa
 PhoneInput.displayName = "PhoneInput";
 
 const InputComponent = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, ...props }, ref) => <Input className={cn("h-12 rounded-none", className)} {...props} ref={ref} />
+  ({ className, ...props }, ref) => {
+    const dir = useDirection();
+    return <Input dir={dir} className={cn("h-12 rounded-none", className)} {...props} ref={ref} />;
+  }
 );
 InputComponent.displayName = "InputComponent";
 
