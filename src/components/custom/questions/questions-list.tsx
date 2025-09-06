@@ -11,7 +11,7 @@ import { useDirection } from "@/lib/utils/get-dirrction.util";
 import { useLocale, useTranslations } from "next-intl";
 import Timer from "./duration/exam-duration";
 import ProgressAnimation from "./prgress-animated";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2Icon } from "lucide-react";
 import { Locales } from "@/i18n/routing";
 import useCheckQuestions from "./hooks/use-check-question";
 import CheckQuestions from "./check-questions";
@@ -359,7 +359,17 @@ export default function QuestionsList({ questions }: QuestionProps) {
                     form.clearErrors(`answers.${step}.correct`);
                   }}
                 >
-                  {step !== totalQuestion - 1 ? t("next") : isPending ? t("loading") : t("submit")}
+                  {step !== totalQuestion - 1
+                    ? t("next")
+                    : isPending
+                    ? t.rich("loading", {
+                        span: () => (
+                          <span>
+                            <Loader2Icon className="animate-spin" />
+                          </span>
+                        ),
+                      })
+                    : t("submit")}
                   {locale === "en" ? <ChevronRight /> : <ChevronLeft />}
                 </Button>
               </div>
