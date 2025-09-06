@@ -16,7 +16,7 @@
   "forgot-your-password": "نسيت كلمة السر",
   "submit": "ارسال",
   "login": "تسجيل الدخول",
-  "loading": "<span></span> برجاء النتظار",
+  "loading": "<span></span> برجاء الإنتظار",
   "user-name-required": "اسم المستخدم مطلوب",
   "userName-min": "اسم المستخدم يتكون من 30 حرفًا كحد أقصى.",
   "first-name-required": "الاسم الأول مطلوب",
