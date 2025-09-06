@@ -11,6 +11,7 @@ declare type User = {
 };
 
 declare type LoginResponse = {
+  message: "success";
   token: string;
   user: User;
 };

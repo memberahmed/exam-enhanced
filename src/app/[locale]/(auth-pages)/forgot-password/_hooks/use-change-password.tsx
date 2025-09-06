@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 export default function useChangePassword() {
+  // Translation
   const t = useTranslations();
 
   const router = useRouter();
