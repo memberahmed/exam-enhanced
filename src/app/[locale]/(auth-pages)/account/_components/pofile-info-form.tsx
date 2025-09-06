@@ -275,7 +275,12 @@ export default function ProfileForm({ userData }: UserData) {
 
           {/* Submit */}
           <Button
-            disabled={(form.formState.isSubmitting && !form.formState.isValid) || !form.formState.isDirty || isPending}
+            disabled={
+              (form.formState.isSubmitted && !form.formState.isValid) ||
+              !form.formState.isDirty ||
+              (form.formState.isSubmitted && !form.formState.isDirty) ||
+              isPending
+            }
             className=" w-full font-medium text-base tracking-none capitalize leading-full h-[46px]"
             type="submit"
           >
