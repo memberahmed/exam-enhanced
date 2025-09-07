@@ -16,6 +16,12 @@ export async function logoutUser() {
     },
   });
 
+  if (res.status === 401) {
+    return {
+      code: 401,
+      message: "Unauthrized",
+    };
+  }
   const payload: ApiResponse<LogoutResponse> = await res.json();
 
   if ("code" in payload) {

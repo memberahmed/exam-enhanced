@@ -19,7 +19,12 @@ export default function useLogout() {
       toast.loading(t("logging-out"), { id: "logout" });
 
       const res = await logoutUser();
-      console.log(res);
+
+      if ("code" in res && res.message === "Unauthrized") {
+        await signOut({ redirect: false });
+        window.location.replace("/login");
+      }
+
       if ("code" in res) {
         console.log(res.message);
         throw new Error(res.message);

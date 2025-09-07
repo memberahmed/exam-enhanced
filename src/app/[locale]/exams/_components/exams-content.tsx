@@ -20,7 +20,11 @@ export default async function ExamsContent({ searchParams }: ExamsContentProps) 
 
   // Error feed back
   if ("code" in exams) {
-    return <FeedbackError error={exams?.message || t("something-went-wrong-please")} />;
+    return (
+      <div className="md:p-6 p-3">
+        <FeedbackError error={exams?.message || t("something-went-wrong-please")} />
+      </div>
+    );
   }
 
   return (
