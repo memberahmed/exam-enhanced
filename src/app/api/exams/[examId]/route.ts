@@ -6,7 +6,6 @@ export async function GET(req: NextRequest, { params }: { params: { examId: stri
   try {
     const token = await getToken({ req });
 
-    console.log("ExamId route handler", examId);
     const baseUrl = process.env.API;
 
     const res = await fetch(`${baseUrl}/exams/${examId}`, {

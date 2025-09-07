@@ -1,4 +1,3 @@
-import FeedbackError from "@/components/comman/feedback-error";
 import { getExams } from "@/lib/api/exams.api";
 import ExamCard from "./exam-card";
 import { getTranslations } from "next-intl/server";
@@ -20,11 +19,7 @@ export default async function ExamsContent({ searchParams }: ExamsContentProps) 
 
   // Error feed back
   if ("code" in exams) {
-    return (
-      <div className="md:p-6 p-3">
-        <FeedbackError error={exams?.message || t("something-went-wrong-please")} />
-      </div>
-    );
+    throw new Error(exams.message);
   }
 
   return (

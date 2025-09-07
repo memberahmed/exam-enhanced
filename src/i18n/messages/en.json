@@ -118,5 +118,13 @@
   "new-password-equired": "New password is required",
   "website-title": "Exams App",
   "website-description": "Manage and take your exams online with ease.",
-  "wedsite-key-words": "online exams, practice tests, student portal"
+  "wedsite-key-words": "online exams, practice tests, student portal",
+  "go-back": "Go Back",
+  "try-again": "Try Again",
+  "need-help-contact": "Need help? Contact our support team or check our status page.",
+  "unexpected-error": "Unexpected Error",
+  "were-sorry-but-something": "We're sorry, but something went wrong while processing your request. Please try again or return to the homepage.",
+  "somthing-wrong": "Something Went Wrong",
+  "erro-backup": "It looks like you've ventured into uncharted territory.",
+  "sorry-we-couldnt-find-page": "Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or you entered the wrong URL."
 }
