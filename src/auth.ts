@@ -14,12 +14,6 @@ export const authOption: NextAuthOptions = {
         password: {},
       },
       async authorize(credentials) {
-        // You need to provide your own logic here that takes the credentials
-        // submitted and returns either a object representing a user or value
-        // that is false/null if the credentials are invalid.
-        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-        // You can also use the `req` object to obtain additional parameters
-        // (i.e., the request IP address)
         const baseUrl = process.env.API;
         const res = await fetch(`${baseUrl}/auth/signin`, {
           method: "POST",

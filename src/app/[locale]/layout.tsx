@@ -11,12 +11,50 @@ import { getServerSession } from "next-auth";
 import { authOption } from "@/auth";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Nvabreadcrumb from "@/components/custom/breadcrumb-nav/nav-breadcrumb";
+import { getTranslations } from "next-intl/server";
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-inter",
 });
+
+type Params = {
+  params: {
+    locale: Locales;
+  };
+};
+
+export async function generateMetadata({ params }: Params) {
+  const { locale } = params;
+  const t = await getTranslations({ locale });
+
+  return {
+    title: t("website-title"),
+    description: t("website-description"),
+    keywords: t("wedsite-key-words"),
+    authors: [{ name: "Exams App Team", url: "https://exam-enhanced.vercel.app" }],
+    creator: "Exams App Team",
+    publisher: "Exams App",
+    metadataBase: new URL("https://exam-enhanced.vercel.app"),
+    openGraph: {
+      title: t("website-title"),
+      description: t("website-description"),
+      url: "https://exam-enhanced.vercel.app",
+      siteName: t("website-title"),
+      type: "website",
+      locale,
+      images: [
+        {
+          url: "/assets/images/logo.png",
+          width: 1200,
+          height: 630,
+          alt: "Exams App Preview",
+        },
+      ],
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,

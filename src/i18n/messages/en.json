@@ -115,5 +115,8 @@
   "old-password-required": "Old password is required",
   "wedsite-rest": "If you have any problem in <span>token</span>, please press the rest button",
   "rest": "Reset",
-  "new-password-equired": "New password is required"
+  "new-password-equired": "New password is required",
+  "website-title": "Exams App",
+  "website-description": "Manage and take your exams online with ease.",
+  "wedsite-key-words": "online exams, practice tests, student portal"
 }
