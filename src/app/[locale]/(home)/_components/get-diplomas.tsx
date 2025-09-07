@@ -6,7 +6,7 @@ export default async function GetFirstPageDiplomas() {
 
   // Error
   if ("code" in diplomas) {
-    return <p className="text-red-500 text-center p-4">{diplomas.message || "Failed fetching diplomas... :("}</p>;
+    throw new Error(diplomas.message);
   }
 
   // Content

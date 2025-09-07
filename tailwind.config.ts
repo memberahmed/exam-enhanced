@@ -10,6 +10,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        "spin-slow": "spin 12s linear infinite",
+        "spin-medium": "spin 6s linear infinite",
+        "bounce-slow": "bounce 3s infinite",
+      },
       screens: {
         // Height-based breakpoints
         "h-tall": { raw: "(min-height: 900px)" },
