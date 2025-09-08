@@ -219,7 +219,7 @@ export default function ChangePasswordForm({ setStep, step, email }: ChangePassw
         <FeedbackError error={error?.message} />
 
         <Button
-          disabled={form.formState.isSubmitting && !form.formState.isValid}
+          disabled={form.formState.isSubmitted && !form.formState.isValid}
           className="w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
           type="submit"
         >

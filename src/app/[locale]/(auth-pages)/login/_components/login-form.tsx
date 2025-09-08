@@ -161,7 +161,7 @@ export function LoginForm() {
           <FeedbackError error={error?.message} />
           {/* Submit */}
           <Button
-            disabled={(form.formState.isSubmitting && !form.formState.isValid) || isPending}
+            disabled={(form.formState.isSubmitted && !form.formState.isValid) || isPending}
             className="w-full font-medium text-base tracking-none leading-full h-12"
             type="submit"
           >
