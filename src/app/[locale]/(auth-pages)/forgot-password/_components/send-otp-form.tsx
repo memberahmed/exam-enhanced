@@ -101,7 +101,7 @@ export default function SendOTP({ setEmail, setStep }: SendOTPProps) {
         <div className="pt-6 gap-9 text-center">
           {/* Submit */}
           <Button
-            disabled={(form.formState.isSubmitting && !form.formState.isValid) || isPending}
+            disabled={(form.formState.isSubmitted && !form.formState.isValid) || isPending}
             className="w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
             type="submit"
           >

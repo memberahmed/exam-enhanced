@@ -75,7 +75,7 @@ export default async function LocaleLayout({
 
   return (
     <html className={`${GeistMono.variable} ${inter.variable}`} lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-      <body>
+      <body className="2xl:container mx-auto">
         <Providers>
           <div className="flex flex-col md:flex-row">
             {/* Side Navigation */}
@@ -89,6 +89,8 @@ export default async function LocaleLayout({
             <ScrollArea className={`xl:h-screen ${!session?._id ? "w-full" : "md:w-8/12 lg:w-9/12 w-full "}`}>
               {/* Breadcrumb */}
               {session?._id && <Nvabreadcrumb />}
+
+              {/* Children */}
               <div>{children}</div>
             </ScrollArea>
           </div>

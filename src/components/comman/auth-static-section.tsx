@@ -5,6 +5,7 @@ import { RectangleEllipsis } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React from "react";
 import ExamFolderIcon from "./folder-icon";
+import { useDirection } from "@/lib/utils/get-dirrction.util";
 
 declare type AuthText = {
   id: number;
@@ -36,8 +37,12 @@ const authText: AuthText[] = [
 
 export default function AuthStaticSection() {
   const t = useTranslations();
+  const dir = useDirection();
   return (
-    <div className="lg:min-h-screen space-y-10 flex flex-col justify-center items-center bg-gradient-to-b from-custom-blue-300 to-white">
+    <div
+      dir={dir}
+      className="lg:min-h-screen space-y-10 flex flex-col justify-center items-center bg-gradient-to-b from-custom-blue-300 to-white"
+    >
       <div className="flex flex-col  p-6 sm:p-12 md:p-24 ">
         <ExamFolderIcon />
 
