@@ -17,6 +17,7 @@ export default function useResendOTP({ setCanResend }: UseresendendOTP) {
     mutationFn: async ({ email }: SendOTPForm) => {
       setCanResend(true);
       const payload = await sendOTPAction({ email });
+      //  Error
       if ("code" in payload) {
         throw new Error(payload.message);
       }
