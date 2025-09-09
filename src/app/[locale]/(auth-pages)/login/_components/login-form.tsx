@@ -15,6 +15,7 @@ import useLogin from "../_hooks/use-login";
 import HaveAccount from "@/components/comman/have-account";
 import ToggleLang from "@/components/comman/toggle-lang";
 import { Locales } from "@/i18n/routing";
+import { useDirection } from "@/lib/utils/get-dirrction.util";
 
 export function LoginForm() {
   //  Translations
@@ -23,6 +24,7 @@ export function LoginForm() {
 
   //  Hooks
   const { isPending, error, login } = useLogin();
+  const dir = useDirection();
 
   // States
   const [showPassword, setShowPassword] = useState(false);
@@ -58,7 +60,7 @@ export function LoginForm() {
     <>
       <Form {...form}>
         <form
-          dir={locale === "ar" ? "rtl" : "ltr"}
+          dir={dir}
           onSubmit={form.handleSubmit(onSubmit)}
           className="p-4 flex flex-col w-full max-w-[454px] justify-center space-y-4"
         >

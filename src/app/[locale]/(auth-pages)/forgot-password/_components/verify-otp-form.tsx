@@ -18,6 +18,7 @@ import useResendOTP from "../_hooks/use-resend-otp";
 import MoveBack from "./move-back";
 import ToggleLang from "@/components/comman/toggle-lang";
 import { Loader2Icon } from "lucide-react";
+import { useDirection } from "@/lib/utils/get-dirrction.util";
 
 type VerifyOTPProps = {
   step: CurrnetForgotPasswordForm;
@@ -28,11 +29,17 @@ export default function VerifyOTP({ email, setStep, step }: VerifyOTPProps) {
   //  Translations
   const t = useTranslations();
   const locale = useLocale() as Locales;
+
+  // State
   const [canResend, setCanResend] = useState(false);
 
   //  Hooks
+  // Mian verify otp main
   const { isPending, error, verifyOTP } = useVerifyOTP({ setStep });
+  // Resend otp hook
   const { resendPending, resendError, resendOTP } = useResendOTP({ setCanResend });
+  const dir = useDirection();
+
   // Countdown state
   const [countdown, setCountdown] = useState(60); // Start at 60 seconds
 
@@ -89,7 +96,7 @@ export default function VerifyOTP({ email, setStep, step }: VerifyOTPProps) {
   return (
     <Form {...form}>
       <form
-        dir={locale === "ar" ? "rtl" : "ltr"}
+        dir={dir}
         onSubmit={form.handleSubmit(onSubmit)}
         className="p-4 flex flex-col w-full max-w-[454px] justify-center space-y-4"
       >
@@ -124,7 +131,7 @@ export default function VerifyOTP({ email, setStep, step }: VerifyOTPProps) {
           control={form.control}
           name="resetCode"
           render={({ field }) => (
-            <FormItem>
+            <FormItem dir={dir}>
               {/* Email label */}
               <FormLabel htmlFor="resetCode" className="sr-only ">
                 {t("verify-otp")}
@@ -132,7 +139,7 @@ export default function VerifyOTP({ email, setStep, step }: VerifyOTPProps) {
               {/* Email text input */}
               <div className="flex  flex-col justify-center items-center ">
                 <FormControl>
-                  <InputOTP id="resetCode" dir={locale === "ar" ? "rtl" : ""} maxLength={6} {...field}>
+                  <InputOTP id="resetCode" dir={dir} maxLength={6} {...field}>
                     <InputOTPGroup>
                       {Array.from({ length: 6 }).map((_, i) => (
                         <InputOTPSlot className="me-4 border border-custom-gray-200  rounded-none" key={i} index={i} />
