@@ -87,7 +87,7 @@ export default async function LocaleLayout({
 
             {/* Main Content */}
             <ScrollArea
-              className={`xl:h-screen overflow-y-auto max-h-screen ${
+              className={`xl:h-screen max-h-screen overflow-y-auto ${
                 !session?._id ? "w-full" : "md:w-8/12 lg:w-9/12 w-full "
               }`}
             >

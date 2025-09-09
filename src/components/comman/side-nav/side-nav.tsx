@@ -36,7 +36,7 @@ export default function SideNav() {
   // States
   const [toggleNav, setToggleNav] = useState(false);
   return (
-    <nav className="bg-custom-blue-50 space-y-6 md:min-h-screen  flex flex-col border-r p-5 md:p-10">
+    <nav className="bg-custom-blue-50 space-y-6 md:min-h-screen max-h-screen overflow-y-auto flex flex-col border-r p-5 md:p-10">
       {/* Toggle language  */}
       <ToggleLang />
 
