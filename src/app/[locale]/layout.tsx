@@ -87,7 +87,9 @@ export default async function LocaleLayout({
 
             {/* Main Content */}
             <ScrollArea
-              className={`xl:h-screen max-h-screen ${!session?._id ? "w-full" : "md:w-8/12 lg:w-9/12 w-full "}`}
+              className={`xl:h-screen overflow-y-auto max-h-screen ${
+                !session?._id ? "w-full" : "md:w-8/12 lg:w-9/12 w-full "
+              }`}
             >
               {/* Breadcrumb */}
               {session?._id && <Nvabreadcrumb />}
