@@ -144,7 +144,7 @@ export default function VerifyOTP({ email, setStep, step }: VerifyOTPProps) {
                 <p className="font-GeistMono mt-6 font-medium text-[14px] tracking-none leading-full text-custom-gray-500">
                   {canResend ? (
                     <span onClick={handleResendOTP} className="text-custom-blue-600 cursor-pointer underline">
-                      {resendPending ? t("loading") : t("resend")}
+                      {resendPending ? t("please-wait") : t("resend")}
                     </span>
                   ) : (
                     t("you-can-request-another-otp") + ` ${countdown} ${t("s")}`
