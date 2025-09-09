@@ -17,6 +17,7 @@ import useVerifyOTP from "../_hooks/use-verify-otp";
 import useResendOTP from "../_hooks/use-resend-otp";
 import MoveBack from "./move-back";
 import ToggleLang from "@/components/comman/toggle-lang";
+import { Loader2Icon } from "lucide-react";
 
 type VerifyOTPProps = {
   step: CurrnetForgotPasswordForm;
@@ -167,7 +168,11 @@ export default function VerifyOTP({ email, setStep, step }: VerifyOTPProps) {
             className="w-full font-medium font-GeistMono text-base tracking-none leading-full h-12"
             type="submit"
           >
-            {isPending ? t("loading") : t("continue")}
+            {isPending
+              ? t.rich("loading", {
+                  span: () => <Loader2Icon />,
+                })
+              : t("continue")}
             <Arrow />
           </Button>
           <div className="pt-9">
