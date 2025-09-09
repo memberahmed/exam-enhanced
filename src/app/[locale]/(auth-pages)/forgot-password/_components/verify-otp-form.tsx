@@ -170,7 +170,7 @@ export default function VerifyOTP({ email, setStep, step }: VerifyOTPProps) {
           >
             {isPending
               ? t.rich("loading", {
-                  span: () => <Loader2Icon />,
+                  span: () => <Loader2Icon className="animate-spin" />,
                 })
               : t("continue")}
             <Arrow />
