@@ -126,5 +126,7 @@
   "were-sorry-but-something": "We're sorry, but something went wrong while processing your request. Please try again or return to the homepage.",
   "somthing-wrong": "Something Went Wrong",
   "erro-backup": "It looks like you've ventured into uncharted territory.",
-  "sorry-we-couldnt-find-page": "Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or you entered the wrong URL."
+  "sorry-we-couldnt-find-page": "Sorry, we couldn't find the page you're looking for. It might have been moved, deleted, or you entered the wrong URL.",
+  "loading-0": "loading...",
+  "please-wait": "Please wait"
 }
