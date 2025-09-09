@@ -14,19 +14,20 @@ export default function useRegister() {
   } = useMutation({
     mutationFn: async (registerForm: RegisterFormType) => {
       const paylod = await registerActions(registerForm);
+      if ("code" in paylod) {
+        throw new Error(paylod.message);
+      }
       return paylod;
     },
     onMutate: () => {
       // Show toast immediately
-      toast.loading(t("loading"), { id: "register" });
+      toast.loading(t("please-wait"), {
+        id: "register",
+      });
     },
-    onSuccess: (paylod) => {
-      if ("code" in paylod) {
-        toast.dismiss("register");
-      } else {
-        toast.success(t("the-account-created"), { id: "register" });
-        router.push("/login");
-      }
+    onSuccess: () => {
+      toast.success(t("the-account-created"), { id: "register" });
+      router.push("/login");
     },
     onError: (err) => {
       console.log(err);
