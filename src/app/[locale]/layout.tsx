@@ -75,7 +75,7 @@ export default async function LocaleLayout({
 
   return (
     <html className={`${GeistMono.variable} ${inter.variable}`} lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-      <body className="2xl:container mx-auto">
+      <body>
         <Providers>
           <div className="flex flex-col md:flex-row">
             {/* Side Navigation */}
