@@ -4,7 +4,6 @@ import { useLocale, useTranslations } from "next-intl";
 import LoadMore from "../../../components/custom/load-more/load-more";
 import { Locales } from "@/i18n/routing";
 import DiplomaCardSkeleton from "@/components/sekeltons/diploma-card-sekelton";
-import GetFirstPageDiplomas from "./_components/get-diplomas";
 
 export default function Home() {
   // Translation
@@ -42,8 +41,6 @@ export default function Home() {
             {/* <GetFirstPageDiplomas /> */}
             <LoadMore />
           </Suspense>
-
-          {/* Load more Component */}
         </div>
       </section>
     </main>

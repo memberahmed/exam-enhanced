@@ -114,7 +114,7 @@ export default function QuestionsList({ questions }: QuestionProps) {
     if (!validateAllAnswers(data)) {
       return; // Prevent submission if there are unanswered questions
     }
-    console.log("data", data);
+
     sendQuestions(data, {
       onSuccess: () => {
         form.reset();
