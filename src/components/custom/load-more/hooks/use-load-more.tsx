@@ -31,7 +31,7 @@ export default function useLoadMore() {
         metadata: payload.metadata,
       };
     },
-    initialPageParam: 2,
+    initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       if (lastPage.metadata.currentPage === lastPage.metadata.numberOfPages) return undefined;
 
