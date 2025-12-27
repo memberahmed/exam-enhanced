@@ -39,11 +39,11 @@ export default function Home() {
               </div>
             }
           >
-            <GetFirstPageDiplomas />
+            {/* <GetFirstPageDiplomas /> */}
+            <LoadMore />
           </Suspense>
 
           {/* Load more Component */}
-          <LoadMore />
         </div>
       </section>
     </main>
